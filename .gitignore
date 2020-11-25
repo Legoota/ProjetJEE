@@ -4,4 +4,4 @@
 
 # Java files
 out/*
-/target/
+/target/*
