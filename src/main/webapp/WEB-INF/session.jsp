@@ -33,9 +33,9 @@
 </c:choose>
 
 <br/>
-<a href="/Projet_war">Main page</a>
+<a href="/Projet-1.0">Main page</a>
 <br/>
-<a href="/Projet_war/cookie">Using cookies</a>
+<a href="/Projet-1.0/cookie">Using cookies</a>
 
 <form method="post">
     <p>

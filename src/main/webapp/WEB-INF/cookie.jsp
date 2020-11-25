@@ -25,9 +25,9 @@
 </c:choose>
 
 <br/>
-<a href="/Projet_war">Main page</a>
+<a href="/Projet-1.0">Main page</a>
 <br/>
-<a href="/Projet_war/session">Using sessions</a>
+<a href="/Projet-1.0/session">Using sessions</a>
 
 <form method="post">
     <p>

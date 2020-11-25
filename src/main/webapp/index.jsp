@@ -13,9 +13,9 @@
 <body>
     <br/>
     <h1>Hello world</h1>
-    <a href="/Projet_war/session">Using sessions</a>
+    <a href="/Projet-1.0/session">Using sessions</a>
     <br/>
-    <a href="/Projet_war/cookie">Using cookies</a>
+    <a href="/Projet-1.0/cookie">Using cookies</a>
     <br/>
     <c:set var="x"><%=x %></c:set>
     <c:set var="y"><%=y %></c:set>
@@ -28,6 +28,10 @@
 
 
     <br/>
+    <p>
+        ${Hello.sayHello}
+    </p>
 <img src="https://placekitten.com/<%=x%>/<%=y%>" alt="trop cool le chat" title="chat trop mignon"></img>
+
 </body>
 </html>

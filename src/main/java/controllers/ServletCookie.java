@@ -35,6 +35,6 @@ public class ServletCookie extends HttpServlet
 
         cookie.setMaxAge(60*60); //1h
         response.addCookie(cookie);
-        response.sendRedirect("/Projet_war/cookie");
+        response.sendRedirect("/Projet-1.0/cookie");
     }
 }
