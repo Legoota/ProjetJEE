@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;

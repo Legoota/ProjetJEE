@@ -40,8 +40,6 @@
             <groupId>net.ravendb</groupId>
             <artifactId>ravendb</artifactId>
             <version>5.0.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ravendb-5.0.1.jar</systemPath>
         </dependency>
 
     </dependencies>

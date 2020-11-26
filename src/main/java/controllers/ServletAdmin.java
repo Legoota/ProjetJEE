@@ -1,51 +1,55 @@
 package controllers;
 
-import model.Hello;
+import dataservice.AdminDataService;
 
-import javax.servlet.RequestDispatcher;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.ejb.EJB;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /* Servlet implementation class ServletTest
  */
-@WebServlet("/session")
+@WebServlet("/admin")
 
-public class ServletSession extends HttpServlet {
+public class ServletAdmin extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private Hello myHello;
+    private AdminDataService ads;
 
     /* @see HttpServlet#HttpServlet()
      */
-    public ServletSession() {
+    public ServletAdmin() {
         super();
     }
-
-
-
-
 
     /* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher vue  = request.getRequestDispatcher("/WEB-INF/session.jsp");
-        vue.forward(request, response);
+        boolean res = ads.initializeDatabase();
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try {
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Admin</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Database " + (res ? "initialized" : "failed initializing") + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        } finally {
+            out.close();
+        }
     }
 
     /* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession maSession = request.getSession();
-        maSession.setAttribute("nom",myHello.toUpperCase(request.getParameter(("nom"))));
-
-        System.out.println("Variable nom de la session: " + maSession.getAttribute("nom"));
-        response.sendRedirect("/Projet-1.0/session");
+        doGet(request, response);
     }
 }
