@@ -17,6 +17,8 @@
     <br/>
     <a href="/Projet-1.0/cookie">Using cookies</a>
     <br/>
+    <a href="/Projet-1.0/login">Connexion</a>
+    <br/>
     <c:set var="x"><%=x %></c:set>
     <c:set var="y"><%=y %></c:set>
     <c:if test="${x < 500 && y < 500}">
