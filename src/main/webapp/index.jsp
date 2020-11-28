@@ -29,7 +29,7 @@
 
     <br/>
     <p>
-        ${Hello.sayHello}
+        ${Hello.sayHello}<!-- Ne fonctionne pas (encore) parce que Léo est trop nul-->
     </p>
 <img src="https://placekitten.com/<%=x%>/<%=y%>" alt="trop cool le chat" title="chat trop mignon"></img>
 

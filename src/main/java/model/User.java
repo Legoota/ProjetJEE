@@ -10,19 +10,23 @@ public class User implements Serializable {
     @Id
     private String id;
     @Column
+    private String prenom;
+    @Column
     private String nom;
     @Column
-    private String password;
+    private String pseudo;
     @Column
-    private String description;
+    private String password;
+
 
     public User() { super(); }
-    public User(String id, String nom, String password, String description){
+    public User(String id, String prenom, String nom,String pseudo, String password){
         super();
         this.id = id;
         this.nom = nom;
+        this.pseudo = pseudo;
         this.password = password;
-        this.description = description;
+        this.prenom = prenom;
     }
 
     public String getId() { return id; }
@@ -31,7 +35,9 @@ public class User implements Serializable {
 
     public String getPassword() { return password; }
 
-    public String getDescription() { return description; }
+    public String getPrenom() { return prenom; }
+
+    public String getPseudo() { return pseudo; }
 
     public void setId(String id) { this.id = id; }
 
@@ -39,5 +45,7 @@ public class User implements Serializable {
 
     public void setPassword(String password) { this.password = password; }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setPrenom(String prenom) { this.prenom = prenom; }
+
+    public void setPseudo(String pseudo) { this.pseudo = pseudo; }
 }

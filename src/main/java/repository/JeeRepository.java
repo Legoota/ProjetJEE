@@ -1,11 +1,11 @@
 package repository;
 
 import model.Polymon;
+import model.User;
 import net.ravendb.client.documents.session.IDocumentSession;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class JeeRepository {
     public JeeRepository() { }
@@ -34,5 +34,29 @@ public class JeeRepository {
         }
 
         return polymons;
+    }
+
+    public List<String> getAllPseudos() {
+        List<String> pseudos = new ArrayList<>();
+
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            pseudos = session.query(User.class).selectFields(String.class,"pseudo").toList();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+
+        return pseudos;
+    }
+
+    public boolean addUser(User u){
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            session.store(u);
+            session.saveChanges();
+        }
+        catch(Exception e) {
+            System.out.println("Erreur : " + e);
+            return false;
+        }
+        return true;
     }
 }
