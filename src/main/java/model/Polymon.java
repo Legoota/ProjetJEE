@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Monstre implements Serializable {
+public class Polymon implements Serializable {
     @Id
     private String id;
     @Column
@@ -12,9 +12,17 @@ public class Monstre implements Serializable {
     @Column
     private String description;
     @Column
-    private int PV;
+    private int pv;
 
-    public Monstre() { super(); }
+    public Polymon() { super(); }
+
+    public Polymon(String id, String nom, String description, int pv){
+        super();
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.pv = pv;
+    }
 
     public String getId() { return id; }
 
@@ -22,7 +30,7 @@ public class Monstre implements Serializable {
 
     public String getDescription() { return description; }
 
-    public int getPV() { return PV; }
+    public int getPV() { return pv; }
 
     public void setId(String id) { this.id = id; }
 
@@ -30,5 +38,5 @@ public class Monstre implements Serializable {
 
     public void setDescription(String d) { this.description = d; }
 
-    public void setPV(int pv) { this.PV = pv; }
+    public void setPV(int pv) { this.pv = pv; }
 }

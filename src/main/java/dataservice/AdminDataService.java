@@ -1,6 +1,6 @@
 package dataservice;
 
-import model.Monstre;
+import model.Polymon;
 import repository.JeeRepository;
 
 import javax.ejb.LocalBean;
@@ -20,24 +20,20 @@ public class AdminDataService {
     }
 
     public boolean initializeDatabase() {
-        Vector<Monstre> monstres = new Vector<>();
-        Monstre m = new Monstre();
-        m.setId("1");
-        m.setNom("Test");
-        m.setDescription("La description");
-        m.setPV(100);
-        monstres.add(m);
+        List<Polymon> polymons = new ArrayList<>();
+        Polymon m = new Polymon("Polymon_1","Morycette","Description de Morycette", 100);
+        polymons.add(m);
 
-        return repository.initializeDatabase(monstres);
+        return repository.initializeDatabase(polymons);
     }
 
     public void afficheAllMonstre() {
-        List<Monstre> monstres = new ArrayList<>();
+        List<Polymon> polymons = new ArrayList<>();
 
-        monstres = repository.getAllMonstre();
+        polymons = repository.getAllMonstre();
 
-        for(Monstre monstre : monstres) {
-            System.out.println("Le monstre d'id " + monstre.getId() + " s'appelle " + monstre.getNom());
+        for(Polymon polymon : polymons) {
+            System.out.println("Le polymon d'id " + polymon.getId() + " s'appelle " + polymon.getNom());
         }
     }
 }

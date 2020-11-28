@@ -1,6 +1,6 @@
 package repository;
 
-import model.Monstre;
+import model.Polymon;
 import net.ravendb.client.documents.session.IDocumentSession;
 
 import java.util.ArrayList;
@@ -10,10 +10,10 @@ import java.util.Vector;
 public class JeeRepository {
     public JeeRepository() { }
 
-    public boolean initializeDatabase(Vector<Monstre> monstres) {
+    public boolean initializeDatabase(List<Polymon> polymons) {
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
-                for(Monstre monstre : monstres) {
-                    session.store(monstre);
+                for(Polymon polymon : polymons) {
+                    session.store(polymon);
                 }
                 session.saveChanges();
         }
@@ -24,15 +24,15 @@ public class JeeRepository {
         return true;
     }
 
-    public List<Monstre> getAllMonstre() {
-        List<Monstre> monstres = new ArrayList<>();
+    public List<Polymon> getAllMonstre() {
+        List<Polymon> polymons = new ArrayList<>();
 
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
-            monstres = session.query(Monstre.class).toList();
+            polymons = session.query(Polymon.class).toList();
         } catch(Exception e) {
             System.out.println("Erreur : " + e);
         }
 
-        return monstres;
+        return polymons;
     }
 }
