@@ -13,11 +13,8 @@
 <body>
     <br/>
     <h1>Hello world</h1>
-    <a href="/Projet-1.0/session">Using sessions</a>
     <br/>
-    <a href="/Projet-1.0/cookie">Using cookies</a>
-    <br/>
-    <a href="/Projet-1.0/login">Connexion</a>
+    <a href="/Projet-1.0/login/login">Connexion</a>
     <br/>
     <c:set var="x"><%=x %></c:set>
     <c:set var="y"><%=y %></c:set>
@@ -28,11 +25,6 @@
         <c:out value="Grand chat"/>
     </c:if>
 
-
-    <br/>
-    <p>
-        ${Hello.sayHello}<!-- Ne fonctionne pas (encore) parce que Léo est trop nul-->
-    </p>
 <img src="https://placekitten.com/<%=x%>/<%=y%>" alt="trop cool le chat" title="chat trop mignon"></img>
 
 </body>

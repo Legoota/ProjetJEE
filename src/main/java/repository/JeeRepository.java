@@ -48,6 +48,16 @@ public class JeeRepository {
         return pseudos;
     }
 
+    public User getUserFromPseudo(String pseudo) {
+        User u = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            u = session.query(User.class).whereEquals("pseudo",pseudo).firstOrDefault();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return u;
+    }
+
     public boolean addUser(User u){
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
             session.store(u);

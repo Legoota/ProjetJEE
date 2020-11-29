@@ -28,6 +28,13 @@ public class UserDataService {
         return repository.addUser(u);
     }
 
+    public User loginUser(String pseudo, String password) {
+        User u = repository.getUserFromPseudo(pseudo);
+        if(u == null) return null;
+        if(u.getPassword().equals(getMd5(password))) return u;
+        return null;
+    }
+
     public static String getMd5(String input)
     {
         try {
