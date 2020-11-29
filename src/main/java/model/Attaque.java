@@ -12,25 +12,25 @@ public class Attaque implements Serializable {
     @Column
     private String nom;
     @Column
-    private String description;
+    private int degats;
 
     public Attaque(){super();}
-    public Attaque(String id, String nom, String description){
+    public Attaque(String id, String nom, int degats){
         super();
         this.id = id;
         this.nom = nom;
-        this.description = description;
+        this.degats = degats;
     }
 
     public String getId() { return id; }
 
     public String getNom() { return nom; }
 
-    public String getDescription() { return description; }
+    public int getDegats() { return degats; }
 
     public void setId(String id) { this.id = id; }
 
     public void setNom(String nom) { this.nom = nom; }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setDegats(int degats) { this.degats = degats; }
 }

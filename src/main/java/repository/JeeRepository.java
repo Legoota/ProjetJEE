@@ -1,5 +1,6 @@
 package repository;
 
+import model.Attaque;
 import model.Polymon;
 import model.User;
 import net.ravendb.client.documents.session.IDocumentSession;
@@ -10,10 +11,13 @@ import java.util.List;
 public class JeeRepository {
     public JeeRepository() { }
 
-    public boolean initializeDatabase(List<Polymon> polymons) {
+    public boolean initializeDatabase(List<Polymon> polymons, List<Attaque> attaques) {
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
                 for(Polymon polymon : polymons) {
                     session.store(polymon);
+                }
+                for(Attaque attaque : attaques){
+                    session.store(attaque);
                 }
                 session.saveChanges();
         }
