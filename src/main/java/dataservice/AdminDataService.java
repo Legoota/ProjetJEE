@@ -10,16 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * Classe DataService pour les fonctionnalités admin
+ */
 @Stateless
 @LocalBean
 public class AdminDataService {
 
     JeeRepository repository;
 
-    public AdminDataService() {
-        this.repository = new JeeRepository();
-    }
+    /**
+     * Constructeur de la classe AdminDataService
+     */
+    public AdminDataService() { this.repository = new JeeRepository(); }
 
+    /**
+     * Méthode permettant de réaliser l'initialisation de la base de données avec un jeu de valeurs
+     * @return <b>True</b> si correctement initialisée, <b>False</b> sinon
+     */
     public boolean initializeDatabase() {
         List<Polymon> polymons = new ArrayList<>();
         List<Attaque> attaques = new ArrayList<>();
@@ -147,6 +155,9 @@ public class AdminDataService {
         return repository.initializeDatabase(polymons, attaques);
     }
 
+    /**
+     * Méthode permettant d'afficher dans la sortie standard l'ensemble des <i>Polymons</i> présents en base de données
+     */
     public void afficheAllMonstre() {
         List<Polymon> polymons = new ArrayList<>();
 

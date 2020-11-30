@@ -8,9 +8,22 @@ import net.ravendb.client.documents.session.IDocumentSession;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe contenant l'ensemble des méthodes accédant à la base de données
+ */
 public class JeeRepository {
+
+    /**
+     * Constructeur de la classe JeeRepository
+     */
     public JeeRepository() { }
 
+    /**
+     * Méthode permettant l'initialisation de la base de données
+     * @param polymons Liste de <i>Polymons</i> à insérer dans la base de données
+     * @param attaques Liste d'<i>Attaques</i> à insérer dans la base de données
+     * @return <b>True</b> si la base de données a été correctement initialisée, <b>False</b> sinon
+     */
     public boolean initializeDatabase(List<Polymon> polymons, List<Attaque> attaques) {
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
                 for(Polymon polymon : polymons) {
@@ -76,7 +89,7 @@ public class JeeRepository {
     /**
      * Méthode permettant d'ajouter un joueur
      * @param u Le joueur à ajouter
-     * @return true si le joueur à été ajouté, false sinon
+     * @return <b>True</b> si le joueur à été correctement ajouté, <b>False</b> sinon
      */
     public boolean addUser(User u){
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {

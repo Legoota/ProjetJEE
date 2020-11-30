@@ -10,15 +10,30 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+/**
+ * Classe DataService pour les fonctionnalités liées aux <i>Users</i>
+ */
 @Stateless
 @LocalBean
 public class UserDataService {
+
     JeeRepository repository;
 
+    /**
+     * Constructeur de la classe UserDataService
+     */
     public UserDataService() {
         this.repository = new JeeRepository();
     }
 
+    /**
+     * Méthode permettant de créer un <i>User</i>
+     * @param prenom Prénom du <i>User</i>
+     * @param nom Nom du <i>User</i>
+     * @param pseudo Pseudo du <i>User</i>
+     * @param password Mot de passe du <i>User</i>
+     * @return <b>True</b> si le <i>User</i> a correctement été créé, <b>False</b> sinon
+     */
     public boolean createUser(String prenom, String nom, String pseudo, String password){
         List<String> currentPseudos = repository.getAllPseudos();
         for(String p : currentPseudos){
@@ -28,6 +43,12 @@ public class UserDataService {
         return repository.addUser(u);
     }
 
+    /**
+     * Méthode permettant d'authentifier un <i>User</i>
+     * @param pseudo Pseudo du <i>User</i>
+     * @param password Mot de passe du du <i>User</i>
+     * @return <b>True</b> si le <i>User</i> a correctement été authentifié, <b>False</b> sinon
+     */
     public User loginUser(String pseudo, String password) {
         User u = repository.getUserFromPseudo(pseudo);
         if(u == null) return null;
@@ -35,6 +56,11 @@ public class UserDataService {
         return null;
     }
 
+    /**
+     * Méthode de classe réalisant le hash MD5 d'une chaine de charactères
+     * @param input Chaine de charactères à hasher
+     * @return Hash de la chaine de charactères d'entrée
+     */
     public static String getMd5(String input)
     {
         try {
