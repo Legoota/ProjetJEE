@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @WebServlet("/login/*")
+/**
+ * Classe servlet pour la gestion du login de l'utilisateur
+ */
 public class ServletLogin extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

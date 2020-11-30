@@ -15,6 +15,9 @@ import java.io.PrintWriter;
  */
 @WebServlet("/admin")
 
+/**
+ * Classe servlet pour la gestion de l'administrateur
+ */
 public class ServletAdmin extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

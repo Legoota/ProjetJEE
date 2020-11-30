@@ -28,6 +28,10 @@ public class JeeRepository {
         return true;
     }
 
+    /**
+     * Méthode permettant de récupérer tous les Polymons
+     * @return Une liste de tous les Polymons
+     */
     public List<Polymon> getAllMonstre() {
         List<Polymon> polymons = new ArrayList<>();
 
@@ -36,10 +40,13 @@ public class JeeRepository {
         } catch(Exception e) {
             System.out.println("Erreur : " + e);
         }
-
         return polymons;
     }
 
+    /**
+     * Méthode permettant de récupérer tous les pseudos des joueurs
+     * @return La liste des pseudos des joueurs
+     */
     public List<String> getAllPseudos() {
         List<String> pseudos = new ArrayList<>();
 
@@ -48,10 +55,14 @@ public class JeeRepository {
         } catch(Exception e) {
             System.out.println("Erreur : " + e);
         }
-
         return pseudos;
     }
 
+    /**
+     * Méthode permettant de récupérer un joueur par son pseudo
+     * @param pseudo Le pseudo du joueur à récupérer
+     * @return Le joueur
+     */
     public User getUserFromPseudo(String pseudo) {
         User u = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
@@ -62,6 +73,11 @@ public class JeeRepository {
         return u;
     }
 
+    /**
+     * Méthode permettant d'ajouter un joueur
+     * @param u Le joueur à ajouter
+     * @return true si le joueur à été ajouté, false sinon
+     */
     public boolean addUser(User u){
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
             session.store(u);

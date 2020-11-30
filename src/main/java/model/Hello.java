@@ -5,6 +5,9 @@ import javax.ejb.Stateless;
 
 @Stateless
 @LocalBean
+/**
+ *
+ */
 public class Hello {
     public Hello() {}
     public String toUpperCase(String in) {
