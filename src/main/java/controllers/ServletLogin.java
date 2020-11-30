@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 
-@WebServlet("/login/*")
 /**
  * Classe servlet pour la gestion du login de l'utilisateur
  */
+@WebServlet("/login/*")
 public class ServletLogin extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

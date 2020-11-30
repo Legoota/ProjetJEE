@@ -13,11 +13,10 @@ import java.io.PrintWriter;
 
 /* Servlet implementation class ServletTest
  */
-@WebServlet("/admin")
-
 /**
  * Classe servlet pour la gestion de l'administrateur
  */
+@WebServlet("/admin")
 public class ServletAdmin extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
 /**
  * Classe représentant le parcours du joueur
  */
+@Entity
 public class Parcours implements Serializable {
     @Id
     private String id;

@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
 /**
- * Classe attaque représentant les attaques des Polymons
+ * Classe attaque représentant les attaques des <i>Polymon</i>s
  */
+@Entity
 public class Attaque implements Serializable {
     @Id
     private String id;

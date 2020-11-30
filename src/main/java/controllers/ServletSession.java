@@ -14,11 +14,10 @@ import java.io.IOException;
 
 /* Servlet implementation class ServletTest
  */
-@WebServlet("/session")
-
 /**
  *
  */
+@WebServlet("/session")
 public class ServletSession extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

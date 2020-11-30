@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
 /**
  * Classe représentant un joueur
  */
+@Entity
 public class User implements Serializable {
     @Id
     private String id;

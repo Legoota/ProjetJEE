@@ -3,28 +3,43 @@ package model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
 /**
- * Classe représentant un Polymon
+ * Classe représentant un <i>Polymon</i>
  */
+@Entity
 public class Polymon implements Serializable {
+    /**
+     * L'identifiant du <i>Polymon</i>
+     */
     @Id
     private String id;
+    /**
+     * Le nom du <i>Polymon</i>
+     */
     @Column
     private String nom;
+    /**
+     * La description du <i>Polymon</i>
+     */
     @Column
     private String description;
+    /**
+     * Le nombre de points de vie du <i>Polymon</i>
+     */
     @Column
     private int pv;
 
+    /**
+     * Constructeur générique d'un <i>Polymon</i>
+     */
     public Polymon() { super(); }
 
     /**
-     * Constructeur d'un Polymon
-     * @param id L'ID du Polymon
-     * @param nom Le nom du Polymon
-     * @param description La description du Polymon
-     * @param pv Le nombre de PV du Polymon
+     * Constructeur d'un <i>Polymon</i>
+     * @param id L'ID du <i>Polymon</i>
+     * @param nom Le nom du <i>Polymon</i>
+     * @param description La description du <i>Polymon</i>
+     * @param pv Le nombre de PV du <i>Polymon</i>
      */
     public Polymon(String id, String nom, String description, int pv){
         super();
@@ -35,50 +50,50 @@ public class Polymon implements Serializable {
     }
 
     /**
-     * Getteur de l'ID du Polymon
-     * @return L'ID du Polymon
+     * Getteur de l'ID du <i>Polymon</i>
+     * @return L'ID du <i>Polymon</i>
      */
     public String getId() { return id; }
 
     /**
-     * Getteur du nom du Polymon
-     * @return Le nom du Polymon
+     * Getteur du nom du <i>Polymon</i>
+     * @return Le nom du <i>Polymon</i>
      */
     public String getNom() { return nom; }
 
     /**
-     * Getteur de la description du Polymon
-     * @return La description du Polymon
+     * Getteur de la description du <i>Polymon</i>
+     * @return La description du <i>Polymon</i>
      */
     public String getDescription() { return description; }
 
     /**
-     * Getteur du nombre de PV du Polymon
-     * @return Le nombre de PV du Polymon
+     * Getteur du nombre de PV du <i>Polymon</i>
+     * @return Le nombre de PV du <i>Polymon</i>
      */
     public int getPV() { return pv; }
 
     /**
-     * Setteur de l'ID du Polymon
-     * @param id l'ID du Polymon
+     * Setteur de l'ID du <i>Polymon</i>
+     * @param id l'ID du <i>Polymon</i>
      */
     public void setId(String id) { this.id = id; }
 
     /**
-     * Setteur du nom du Polymon
-     * @param n Le nom du Polymon
+     * Setteur du nom du <i>Polymon</i>
+     * @param n Le nom du <i>Polymon</i>
      */
     public void setNom(String n) { this.nom = n; }
 
     /**
-     * Setteur de la description du Polymon
-     * @param d La description du Polymon
+     * Setteur de la description du <i>Polymon</i>
+     * @param d La description du <i>Polymon</i>
      */
     public void setDescription(String d) { this.description = d; }
 
     /**
-     * Setteur du nombre de PV du Polymon
-     * @param pv Le nombre de PV du Polymon
+     * Setteur du nombre de PV du <i>Polymon</i>
+     * @param pv Le nombre de PV du <i>Polymon</i>
      */
     public void setPV(int pv) { this.pv = pv; }
 }
