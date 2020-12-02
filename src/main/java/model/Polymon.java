@@ -2,6 +2,9 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Classe représentant un <i>Polymon</i>
@@ -30,6 +33,12 @@ public class Polymon implements Serializable {
     private int pv;
 
     /**
+     * La liste des attaques du <i>Polymon</i>
+     */
+    @ElementCollection
+    private List<Attaque> attaques;
+
+    /**
      * Constructeur générique d'un <i>Polymon</i>
      */
     public Polymon() { super(); }
@@ -40,13 +49,16 @@ public class Polymon implements Serializable {
      * @param nom Le nom du <i>Polymon</i>
      * @param description La description du <i>Polymon</i>
      * @param pv Le nombre de PV du <i>Polymon</i>
+     * @param attaques La liste des attaques du <i>Polymon</i>
      */
-    public Polymon(String id, String nom, String description, int pv){
+    public Polymon(String id, String nom, String description, int pv, List<Attaque> attaques){
         super();
         this.id = id;
         this.nom = nom;
         this.description = description;
         this.pv = pv;
+        this.attaques = new ArrayList<>();
+        this.attaques = attaques;
     }
 
     /**
@@ -74,6 +86,12 @@ public class Polymon implements Serializable {
     public int getPV() { return pv; }
 
     /**
+     * Getteur de la liste des attaques du <i>Polymon</i>
+     * @return La liste des attaques du <i>Polymon</i>
+     */
+    public List<Attaque> getAttaques() { return attaques; }
+
+    /**
      * Setteur de l'ID du <i>Polymon</i>
      * @param id l'ID du <i>Polymon</i>
      */
@@ -96,4 +114,10 @@ public class Polymon implements Serializable {
      * @param pv Le nombre de PV du <i>Polymon</i>
      */
     public void setPV(int pv) { this.pv = pv; }
+
+    /**
+     * Setteur de la liste des attaques du <i>Polymon</i>
+     * @param attaques La liste d'attaques du <i>Polymon</i>
+     */
+    public void setAttaques(List<Attaque> attaques) { this.attaques = attaques; }
 }
