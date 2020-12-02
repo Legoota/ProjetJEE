@@ -20,84 +20,123 @@ public class User implements Serializable {
     private String pseudo;
     @Column
     private String password;
+    @Column
+    private Polymon polymon;
 
 
-    public User() { super(); }
+    public User() {
+        super();
+    }
 
     /**
      * Constructeur d'un joueur
-     * @param id L'ID du joueur
-     * @param prenom Le prénom du joueur
-     * @param nom Le nom du joueur
-     * @param pseudo Le pseudo du joueur
+     * @param id       L'ID du joueur
+     * @param prenom   Le prénom du joueur
+     * @param nom      Le nom du joueur
+     * @param pseudo   Le pseudo du joueur
      * @param password Le mot de passe du joueur
      */
-    public User(String id, String prenom, String nom,String pseudo, String password){
+    public User(String id, String prenom, String nom, String pseudo, String password) {
         super();
         this.id = id;
         this.nom = nom;
         this.pseudo = pseudo;
         this.password = password;
         this.prenom = prenom;
+        this.polymon = null;
     }
 
     /**
      * Getteur de l'ID du joueur
      * @return L'ID du joueur
      */
-    public String getId() { return id; }
+    public String getId() {
+        return id;
+    }
 
     /**
      * Getteur du nom du joueur
      * @return Le nom du joueur
      */
-    public String getNom() { return nom; }
+    public String getNom() {
+        return nom;
+    }
 
     /**
      * Getteur du mot de passe du joueur
      * @return Le mot de passe du joueur
      */
-    public String getPassword() { return password; }
+    public String getPassword() {
+        return password;
+    }
 
     /**
      * Getteur du prénom du joueur
      * @return Le prénom du joueur
      */
-    public String getPrenom() { return prenom; }
+    public String getPrenom() {
+        return prenom;
+    }
 
     /**
      * Getteur du pseudo du joueur
      * @return Le pseudo di joueur
      */
-    public String getPseudo() { return pseudo; }
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    /**
+     * Getteur du <i>Polymon</i> du joueur
+     * @return Le <i>Polymon</i> du joueur
+     */
+    public Polymon getPolymon() {
+        return polymon;
+    }
 
     /**
      * Setteur de l'ID du joueur
      * @param id L'ID du joueur
      */
-    public void setId(String id) { this.id = id; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
      * Setteur du nom du joueur
      * @param nom Le nom du joueur
      */
-    public void setNom(String nom) { this.nom = nom; }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
     /**
      * Setteur du mot de passe du joueur
      * @param password Le mot de passe du joueur
      */
-    public void setPassword(String password) { this.password = password; }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     /**
      * Setteur du prénom du joueur
      * @param prenom Le prénom du joueur
      */
-    public void setPrenom(String prenom) { this.prenom = prenom; }
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
     /**
      * Setteur du pseudo du joueur
      * @param pseudo Le pseudo du joueur
      */
-    public void setPseudo(String pseudo) { this.pseudo = pseudo; }
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    /**
+     * Setteur du <i>Polymon</i> du joueur
+     * @param polymon Le <i>Polymon</i> du joueur
+     */
+    public void setPolymon(Polymon polymon) { this.polymon = polymon; }
 }

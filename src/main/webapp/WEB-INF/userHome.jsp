@@ -16,6 +16,9 @@
     <c:otherwise>
         <h1>Bonjour <c:out value="${cookie['pseudo'].value}"/>!</h1>
         <a href="/Projet-1.0/login/logout">Déconnexion</a>
+        <br/>
+        <br/>
+        <a href="/Projet-1.0/parcours/nouveau">Nouvelle partie</a>
     </c:otherwise>
 </c:choose>
 

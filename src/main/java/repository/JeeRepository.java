@@ -147,4 +147,19 @@ public class JeeRepository {
         }
         return true;
     }
+
+    /**
+     * Méthode permettant de récuperer un Polymon par son nom
+     * @param nom Le nom du Polymon
+     * @return Le Polymon
+     */
+    public Polymon getPolymonByNom(String nom){
+        Polymon p = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            p = session.query(Polymon.class).whereEquals("nom", nom).firstOrDefault();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return p;
+    }
 }
