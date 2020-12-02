@@ -6,6 +6,7 @@ import repository.JeeRepository;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +30,7 @@ public class AdminDataService {
      * Méthode permettant de réaliser l'initialisation de la base de données avec un jeu de valeurs
      * @return <b>True</b> si correctement initialisée, <b>False</b> sinon
      */
-    public boolean initializeDatabase() {
+    public boolean initializeDatabase() throws FileNotFoundException {
         List<Polymon> polymons = new ArrayList<>();
         List<Attaque> attaques = new ArrayList<>();
 
