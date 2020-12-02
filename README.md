@@ -9,7 +9,6 @@ The main goal was to realise a JEE application about fighting monsters.
 ### Features
 
 ###### TBA:
-* Add a list of *Attaque* for each *Polymons*
 * Add the *Parcours* system
 * Create *Parcours* choices
 * Build the duel system
@@ -20,6 +19,7 @@ The main goal was to realise a JEE application about fighting monsters.
 * Account creation
 * Account logging
 * NoSQL database storage
+* List of *Attaque* for each *Polymons*
 
 ---
 ### Installation
