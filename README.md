@@ -1,4 +1,4 @@
-# JavaGraph<img align="right" width="100" height="100" src="https://github.com/Legoota/ProjetJEE/blob/master/logo.png" alt="Logo Polymon">
+# JavaGraph<img align="right" width="200" height="100" src="https://github.com/Legoota/ProjetJEE/blob/master/logo.png" alt="Logo Polymon">
 ---
 ### Summary
 
