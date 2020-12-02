@@ -3,10 +3,12 @@ package repository;
 import model.Attaque;
 import model.Polymon;
 import model.User;
+import net.ravendb.client.documents.operations.attachments.CloseableAttachmentResult;
 import net.ravendb.client.documents.session.IDocumentSession;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,5 +163,22 @@ public class JeeRepository {
             System.out.println("Erreur : " + e);
         }
         return p;
+    }
+
+    public InputStream getImageByNom(String nom) {
+        InputStream is = null;
+
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            Polymon p = session.query(Polymon.class).whereEquals("nom",nom).firstOrDefault();
+
+            try (CloseableAttachmentResult image = session.advanced().attachments().get(p, p.getNom().toLowerCase()+".png")) {
+                is = image.getData();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+
+        return is;
     }
 }
