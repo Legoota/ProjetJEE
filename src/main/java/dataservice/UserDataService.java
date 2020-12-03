@@ -56,6 +56,10 @@ public class UserDataService {
         return null;
     }
 
+    public boolean addPolymonToUSer(String user, String polymon){
+        return repository.addPolymonToUser(user,polymon);
+    }
+
     /**
      * Méthode de classe réalisant le hash MD5 d'une chaine de charactères
      * @param input Chaine de charactères à hasher

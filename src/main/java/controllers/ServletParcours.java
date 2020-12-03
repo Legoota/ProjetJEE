@@ -32,12 +32,28 @@ public class ServletParcours extends HttpServlet {
         }
         else {
             String route = req.getPathInfo().substring(1);
+            Cookie[] cookies = req.getCookies();
+            String pseudo = null;
+            for(Cookie c : cookies){
+                if(c.getName().equals("pseudo")){
+                    pseudo = c.getValue();
+                }
+            }
             switch (route) {
                 case "nouveau":
                     HttpSession session = req.getSession();
                     session.setAttribute("plds",plds);
                     RequestDispatcher nouveauParcours  = req.getRequestDispatcher("/WEB-INF/nouveauParcours.jsp");
                     nouveauParcours.forward(req, resp);
+                    break;
+                case "starter/carapuce":
+                    uds.addPolymonToUSer(pseudo,"Polymon_3");
+                    break;
+                case "starter/salameche":
+                    uds.addPolymonToUSer(pseudo,"Polymon_2");
+                    break;
+                case "starter/bulbizarre":
+                    uds.addPolymonToUSer(pseudo,"Polymon_1");
                     break;
                 default:
                     RequestDispatcher defautHome  = req.getRequestDispatcher("/WEB-INF/userHome.jsp");

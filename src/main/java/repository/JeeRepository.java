@@ -223,4 +223,27 @@ public class JeeRepository {
         }
         return steps;
     }
+
+    public boolean addPolymonToUser(String user, String polymon){
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            User u = session.query(User.class).whereEquals("pseudo",user).firstOrDefault();
+            u.setPolymon(polymon);
+            session.saveChanges();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return false;
+    }
+
+    public Polymon getPolymonFromUser(String user){
+        Polymon p = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            String ident = session.query(User.class).whereEquals("pseudo",user).selectFields(Polymon.class,"polymon").toString();
+            p = session.query(Polymon.class).whereEquals("ident",ident).firstOrDefault();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return p;
+    }
 }

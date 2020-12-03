@@ -21,7 +21,7 @@ public class User implements Serializable {
     @Column
     private String password;
     @Column
-    private Polymon polymon;
+    private String polymon;
 
 
     public User() {
@@ -90,7 +90,7 @@ public class User implements Serializable {
      * Getteur du <i>Polymon</i> du joueur
      * @return Le <i>Polymon</i> du joueur
      */
-    public Polymon getPolymon() {
+    public String getPolymon() {
         return polymon;
     }
 
@@ -138,5 +138,5 @@ public class User implements Serializable {
      * Setteur du <i>Polymon</i> du joueur
      * @param polymon Le <i>Polymon</i> du joueur
      */
-    public void setPolymon(Polymon polymon) { this.polymon = polymon; }
+    public void setPolymon(String polymon) { this.polymon = polymon; }
 }
