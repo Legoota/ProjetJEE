@@ -19,6 +19,11 @@ public class Step implements Serializable {
     @Id
     private String id;
     /**
+     * L'identifiant de la <i>Step</i>
+     */
+    @Column
+    private String ident;
+    /**
      * Le nom de la <i>Step</i>
      */
     @Column
@@ -37,30 +42,31 @@ public class Step implements Serializable {
      * La liste des <i>Polymons</i> trouvables dans cette Step
      */
     @ElementCollection
-    private List<Polymon> polymons;
+    private List<String> polymon_ids;
     /**
      * La liste des propositions de lieux suivants
      */
     @ElementCollection
-    private List<Step> choixSuivants;
+    private List<String> steps_ids;
 
     /**
      * Constructeur de la classe <i>Step</i>
      * @param id L'identifiant de la <i>Step</i>
      * @param nom Le nom de la <i>Step</i>
      * @param description La description de la <i>Step</i>
-     * @param polymons La liste de <i>Polymons</i> de la <i>Step</i>
-     * @param choixSuivants La liste des <i>Steps</i> suivantes
+     * @param polymon_ids La liste de <i>Polymons</i> de la <i>Step</i>
+     * @param steps_ids La liste des <i>Steps</i> suivantes
      */
-    public Step(String id, String nom, String description, String env, List<Polymon> polymons, List<Step> choixSuivants) {
+    public Step(String id, String nom, String description, String env, List<String> polymon_ids, List<String> steps_ids) {
         this.id = id;
+        this.ident = id;
         this.nom = nom;
         this.description = description;
         this.typeEnv = env;
-        this.polymons = new ArrayList<>();
-        this.polymons = polymons;
-        this.choixSuivants = new ArrayList<>();
-        this.choixSuivants = choixSuivants;
+        this.polymon_ids = new ArrayList<>();
+        this.polymon_ids = polymon_ids;
+        this.steps_ids = new ArrayList<>();
+        this.steps_ids = steps_ids;
     }
 
     /**
@@ -68,6 +74,12 @@ public class Step implements Serializable {
      * @return L'id de la <i>Step</i>
      */
     public String getId() { return id; }
+
+    /**
+     * Getteur de l'ident de la <i>Step</i>
+     * @return L'ident de la <i>Step</i>
+     */
+    public String getIdent() { return ident; }
 
     /**
      * Getteur du nom de la <i>Step</i>
@@ -91,19 +103,25 @@ public class Step implements Serializable {
      * Getteur de la liste de <i>Polymons</i> de la <i>Step</i>
      * @return La liste de <i>Polymons</i> de la <i>Step</i>
      */
-    public List<Polymon> getPolymons() { return polymons; }
+    public List<String> getPolymons() { return polymon_ids; }
 
     /**
      * Getteur de la liste des <i>Steps</i> suivantes
      * @return La liste des <i>Steps</i> suivantes
      */
-    public List<Step> getChoixSuivants() { return choixSuivants; }
+    public List<String> getChoixSuivants() { return steps_ids; }
 
     /**
      * Setteur de l'id de la <i>Step</i>
      * @param id L'id de la <i>Step</i>
      */
     public void setId(String id) { this.id = id; }
+
+    /**
+     * Setteur de l'ident de la <i>Step</i>
+     * @param ident L'ident de la <i>Step</i>
+     */
+    public void setIdent(String ident) { this.ident = ident; }
 
     /**
      * Setteur du nom de la <i>Step</i>
@@ -127,11 +145,11 @@ public class Step implements Serializable {
      * Setteur de la liste de <i>Polymons</i> de la <i>Step</i>
      * @param polymons La liste de <i>Polymons</i> de la <i>Step</i>
      */
-    public void setPolymons(List<Polymon> polymons) { this.polymons = polymons; }
+    public void setPolymons(List<String> polymons) { this.polymon_ids = polymons; }
 
     /**
      * Setteur de la liste des <i>Steps</i> suivantes
      * @param choix La liste des <i>Steps</i> suivantes
      */
-    public void setChoixSuivants(List<Step> choix) { this.choixSuivants = choix; }
+    public void setChoixSuivants(List<String> choix) { this.steps_ids = choix; }
 }

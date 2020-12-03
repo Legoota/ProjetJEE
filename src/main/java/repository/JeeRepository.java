@@ -1,8 +1,6 @@
 package repository;
 
-import model.Attaque;
-import model.Polymon;
-import model.User;
+import model.*;
 import net.ravendb.client.documents.operations.attachments.CloseableAttachmentResult;
 import net.ravendb.client.documents.session.IDocumentSession;
 
@@ -26,9 +24,11 @@ public class JeeRepository {
      * Méthode permettant l'initialisation de la base de données
      * @param polymons Liste de <i>Polymons</i> à insérer dans la base de données
      * @param attaques Liste d'<i>Attaques</i> à insérer dans la base de données
+     * @param steps Liste de <i>Steps</i> à insérer dans la base de données
+     * @param parcours Liste des <i>Parcours</i> à insérer dans la base de données
      * @return <b>True</b> si la base de données a été correctement initialisée, <b>False</b> sinon
      */
-    public boolean initializeDatabase(List<Polymon> polymons, List<Attaque> attaques) throws FileNotFoundException {
+    public boolean initializeDatabase(List<Polymon> polymons, List<Attaque> attaques, List<Step> steps, List<Parcours> parcours) throws FileNotFoundException {
         FileInputStream bulbizarre_i = new FileInputStream("img/bulbizarre.png");
         FileInputStream salameche_i = new FileInputStream("img/salameche.png");
         FileInputStream carapuce_i = new FileInputStream("img/carapuce.png");
@@ -56,6 +56,12 @@ public class JeeRepository {
             }
             for(Attaque attaque : attaques){
                 session.store(attaque);
+            }
+            for(Step s : steps){
+                session.store(s);
+            }
+            for(Parcours p : parcours){
+                session.store(p);
             }
 
             session.advanced().attachments().store("Polymon_1", "bulbizarre.png", bulbizarre_i, "image/png");
@@ -180,5 +186,41 @@ public class JeeRepository {
         }
 
         return is;
+    }
+
+    public Step getStepByIdent(String ident) {
+        Step step = null;
+
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            step = session.query(Step.class).whereEquals("ident",ident).firstOrDefault();
+
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return step;
+    }
+
+    public List<Polymon> getPolymonsByStepIdent(String ident){
+        List<Polymon> polymons = null;
+
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            List<String> polymon_ids = session.query(Step.class).whereEquals("ident",ident).selectFields(String.class,"polymons").toList();
+            polymons = session.query(Polymon.class).containsAny("ident",polymon_ids).toList();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return polymons;
+    }
+
+    public List<Step> getNextStepByStepIdent(String ident){
+        List<Step> steps = null;
+
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            List<String> nextStepIds = session.query(Step.class).whereEquals("ident",ident).selectFields(String.class, "choixSuivants").toList();
+            steps = session.query(Step.class).containsAny("ident",nextStepIds).toList();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return steps;
     }
 }

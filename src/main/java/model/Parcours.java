@@ -1,11 +1,9 @@
 package model;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Classe représentant le parcours du joueur

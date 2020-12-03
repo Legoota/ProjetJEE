@@ -17,6 +17,11 @@ public class Polymon implements Serializable {
     @Id
     private String id;
     /**
+     * L'identifiant du <i>Polymon</i>
+     */
+    @Column
+    private String ident;
+    /**
      * Le nom du <i>Polymon</i>
      */
     @Column
@@ -54,6 +59,7 @@ public class Polymon implements Serializable {
     public Polymon(String id, String nom, String description, int pv, List<Attaque> attaques){
         super();
         this.id = id;
+        this.ident = id;
         this.nom = nom;
         this.description = description;
         this.pv = pv;
@@ -66,6 +72,12 @@ public class Polymon implements Serializable {
      * @return L'ID du <i>Polymon</i>
      */
     public String getId() { return id; }
+
+    /**
+     * Getteur de l'Ident du <i>Polymon</i>
+     * @return L'Ident du <i>Polymon</i>
+     */
+    public String getIdent() { return ident; }
 
     /**
      * Getteur du nom du <i>Polymon</i>
@@ -96,6 +108,12 @@ public class Polymon implements Serializable {
      * @param id l'ID du <i>Polymon</i>
      */
     public void setId(String id) { this.id = id; }
+
+    /**
+     * Setteur de l'Ident du <i>Polymon</i>
+     * @param ident l'Ident du <i>Polymon</i>
+     */
+    public void setIdent(String ident) { this.ident = ident; }
 
     /**
      * Setteur du nom du <i>Polymon</i>
