@@ -87,7 +87,7 @@ public class ServletLogin extends HttpServlet {
             case "signup":
                 boolean isUserCreated = uds.createUser(req.getParameter("prenom"), req.getParameter("nom"), req.getParameter("pseudo"), req.getParameter("password"));
                 if(isUserCreated){
-                    RequestDispatcher validateAccountVue  = req.getRequestDispatcher("/WEB-INF/login.jsp");
+                    RequestDispatcher validateAccountVue  = req.getRequestDispatcher("/WEB-INF/signupsuccess.jsp");
                     validateAccountVue.forward(req, resp);
                 }else{
                     RequestDispatcher deniedAccountVue  = req.getRequestDispatcher("/WEB-INF/signup.jsp");

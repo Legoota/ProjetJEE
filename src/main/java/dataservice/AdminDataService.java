@@ -231,7 +231,7 @@ public class AdminDataService {
         Step step_12 = new Step("Step_12", "Paturage", "Les paturages","herbes", step_12_p, step_12_s );
         steps.add(step_12);
 
-        Parcours p = new Parcours("Parcours_1", "Defaut", "Le parcours classique", step_12);
+        Parcours p = new Parcours("Parcours_1", "Kanto", "La première ile de démarrage", step_12);
         parcours.add(p);
 
         return repository.initializeDatabase(polymons, attaques, steps, parcours);
