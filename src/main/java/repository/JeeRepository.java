@@ -157,9 +157,9 @@ public class JeeRepository {
     }
 
     /**
-     * Méthode permettant de récuperer un Polymon par son nom
-     * @param nom Le nom du Polymon
-     * @return Le Polymon
+     * Méthode permettant de récuperer un <i>Polymon</i> par son nom
+     * @param nom Le nom du <i>Polymon</i>
+     * @return Le <i>Polymon</i>
      */
     public Polymon getPolymonByNom(String nom){
         Polymon p = null;
@@ -188,6 +188,11 @@ public class JeeRepository {
         return is;
     }
 
+    /**
+     * Méthode permettant de récupérer le <i>Step</i> du parcours par son identifiant
+     * @param ident L'identifiant du parcours
+     * @return Le <i>Step</i>
+     */
     public Step getStepByIdent(String ident) {
         Step step = null;
 
@@ -200,6 +205,11 @@ public class JeeRepository {
         return step;
     }
 
+    /**
+     * Méthode permettant de récupérer la liste des <i>Polymons</i> présents dans le <i>Step</i> en cours
+     * @param ident L'identifiant du <i>Step</i> en cours
+     * @return La liste des <i>Polymons</i> présents dans ce <i>Step</i>
+     */
     public List<Polymon> getPolymonsByStepIdent(String ident){
         List<Polymon> polymons = null;
 
@@ -212,9 +222,13 @@ public class JeeRepository {
         return polymons;
     }
 
+    /**
+     * Méthode permettant de récupérer la liste des <i>Steps</i> suivants en fonction de l'identifiant du <i>Step</i> actuel
+     * @param ident L'identifiant du <i>Step</i> actuel
+     * @return La liste des <i>Step</i> suivants
+     */
     public List<Step> getNextStepByStepIdent(String ident){
         List<Step> steps = null;
-
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
             List<String> nextStepIds = session.query(Step.class).whereEquals("ident",ident).selectFields(String.class, "choixSuivants").toList();
             steps = session.query(Step.class).containsAny("ident",nextStepIds).toList();
@@ -224,6 +238,12 @@ public class JeeRepository {
         return steps;
     }
 
+    /**
+     * Méthode permettant d'ajouter un <i>Polymon</i> à un joueur
+     * @param user Le joueur auquel on souhaite ajouter un <i>Polymon</i>
+     * @param polymon Le <i>Polymon</i> à ajouter
+     * @return <i>true</i> si le <i>Polymon</i> à été ajouté, <i>false</i> sinon
+     */
     public boolean addPolymonToUser(String user, String polymon){
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
             User u = session.query(User.class).whereEquals("pseudo",user).firstOrDefault();
@@ -236,6 +256,11 @@ public class JeeRepository {
         return false;
     }
 
+    /**
+     * Méthode permettant de récupérer le <i>Polymon</i> du joueur
+     * @param user Le joueur auquel on souahite récupérer le <i>Polymon</i>
+     * @return Le <i>Polymon</i> du joueur
+     */
     public Polymon getPolymonFromUser(String user){
         Polymon p = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {

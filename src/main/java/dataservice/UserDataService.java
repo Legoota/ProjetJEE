@@ -56,6 +56,12 @@ public class UserDataService {
         return null;
     }
 
+    /**
+     * Méthode permettant d'ajouter un <i>Polymon</i> à un joueur
+     * @param user Le joueur auquel on souhaite ajouter un <i>Polymon</i>
+     * @param polymon Le <i>Polymon</i> à ajouter au joueur
+     * @return <i>true</i> si le <i>Polymon</i> à été ajouté, <i>false</i> sinon
+     */
     public boolean addPolymonToUSer(String user, String polymon){
         return repository.addPolymonToUser(user,polymon);
     }
