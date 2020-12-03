@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link title="style" href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet"/>
     <title>Connexion</title>
 </head>
 <body>
-    <h1>Connexion</h1>
+    <h1 class="pixel">Connexion</h1>
     <br/>
     <p>
         <form method="post">

@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "Pixel";
+    src: url("../fonts/pixelmix.ttf") format("truetype");
+}
+
+.pixel {
+    font-family: Pixel;
+}
+
+.foret {
+    background-image: url("../img/foret.png");
+}
+
+.herbes {
+    background-image: url("../img/prairie.png");
+}
+
+.grotte {
+    background-image: url("../img/grotte.png");
+}
+
+.marais {
+    background-image: url("../img/marais.png");
+}
+
+.eau {
+    background-image: url("../img/ocean.png");
+}
+
+.boreal {
+    background-image: url("../img/boreal.png");
+}
+
+.feu {
+    background-image: url("../img/volcan.png");
+}
+
+.espace {
+    background-image: url("../img/espace.png");
+}
