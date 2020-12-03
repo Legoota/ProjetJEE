@@ -10,7 +10,6 @@ The main goal was to realise a JEE application about fighting monsters.
 
 ###### TBA:
 * Add the *Parcours* system
-* Create *Parcours* choices
 * Build the duel system
 * Prettify JSPs
 * Add a user page (choice of Polymon, new game, continue, ...)
@@ -20,6 +19,7 @@ The main goal was to realise a JEE application about fighting monsters.
 * Account logging
 * NoSQL database storage
 * List of *Attaque* for each *Polymons*
+* Create *Parcours* choices
 
 ---
 ### Installation
