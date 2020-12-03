@@ -22,5 +22,6 @@
     <br/>
     <c:out value="${sessionScope.plds.getPolymonByNom('Bulbizarre').getNom()}"/>
     <br/>
+
 </body>
 </html>

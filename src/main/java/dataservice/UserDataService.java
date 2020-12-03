@@ -1,5 +1,7 @@
 package dataservice;
 
+import model.Parcours;
+import model.Polymon;
 import model.User;
 import repository.JeeRepository;
 
@@ -64,6 +66,24 @@ public class UserDataService {
      */
     public boolean addPolymonToUSer(String user, String polymon){
         return repository.addPolymonToUser(user,polymon);
+    }
+
+    /**
+     *
+     * @param pseudo
+     * @return
+     */
+    public Parcours getParcoursFromUser(String pseudo){
+        return repository.getParcoursFromUser(pseudo);
+    }
+
+    /**
+     *
+     * @param pseudo
+     * @return
+     */
+    public Polymon getPolymonFromUser(String pseudo){
+        return repository.getPolymonFromUser(pseudo);
     }
 
     /**

@@ -271,4 +271,62 @@ public class JeeRepository {
         }
         return p;
     }
+
+    /**
+     *
+     * @param pseudo
+     * @return
+     */
+    public Parcours getParcoursFromUser(String pseudo){
+        Parcours p = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            p = session.query(User.class).whereEquals("pseudo",pseudo).selectFields(Parcours.class,"parcours").firstOrDefault();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return p;
+    }
+
+    /**
+     *
+     * @param user
+     * @param parcours
+     * @return
+     */
+    public boolean setParcoursToUser(String user, String parcours){
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            User u = session.query(User.class).whereEquals("pseudo",user).firstOrDefault();
+            Parcours p = session.query(Parcours.class).whereEquals("ident",parcours).firstOrDefault();
+            u.setParcours(p);
+            session.saveChanges();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<String> getAllNomFromParcours(){
+        List<String> parcours = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            parcours = session.query(Parcours.class).selectFields(String.class,"nom").toList();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return parcours;
+    }
+
+    public String getIdentByNom(String nom){
+        String ident = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            ident = session.query(Parcours.class).whereEquals("nom",nom).selectFields(String.class,"ident").toString();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return ident;
+    }
 }

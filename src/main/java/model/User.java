@@ -22,6 +22,8 @@ public class User implements Serializable {
     private String password;
     @Column
     private String polymon;
+    @Column
+    private Parcours parcours;
 
 
     public User() {
@@ -44,6 +46,7 @@ public class User implements Serializable {
         this.password = password;
         this.prenom = prenom;
         this.polymon = null;
+        this.parcours = null;
     }
 
     /**
@@ -95,6 +98,12 @@ public class User implements Serializable {
     }
 
     /**
+     * Getteur du parcours du joueur
+     * @return Le parcours du joueur
+     */
+    public Parcours getParcours() { return parcours; }
+
+    /**
      * Setteur de l'ID du joueur
      * @param id L'ID du joueur
      */
@@ -139,4 +148,10 @@ public class User implements Serializable {
      * @param polymon Le <i>Polymon</i> du joueur
      */
     public void setPolymon(String polymon) { this.polymon = polymon; }
+
+    /**
+     * Setteur du parcours du joueur
+     * @param parcours Le parcours du joueur
+     */
+    public void setParcours(Parcours parcours) { this.parcours = parcours; }
 }

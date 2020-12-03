@@ -39,22 +39,32 @@ public class ServletParcours extends HttpServlet {
                     pseudo = c.getValue();
                 }
             }
+            HttpSession session = req.getSession();
+            session.setAttribute("pds", pds);
             switch (route) {
                 case "nouveau":
-                    HttpSession session = req.getSession();
                     session.setAttribute("plds",plds);
-                    RequestDispatcher nouveauParcours  = req.getRequestDispatcher("/WEB-INF/nouveauParcours.jsp");
+                    RequestDispatcher nouveauParcours  = req.getRequestDispatcher("/WEB-INF/choixPolymon.jsp");
                     nouveauParcours.forward(req, resp);
                     break;
                 case "starter/carapuce":
                     uds.addPolymonToUSer(pseudo,"Polymon_3");
+                    session.setAttribute("polymon","Polymon_3");
+                    resp.sendRedirect("/Projet-1.0/parcours/choixparcours");
                     break;
                 case "starter/salameche":
                     uds.addPolymonToUSer(pseudo,"Polymon_2");
+                    session.setAttribute("polymon","Polymon_2");
+                    resp.sendRedirect("/Projet-1.0/parcours/choixparcours");
                     break;
                 case "starter/bulbizarre":
                     uds.addPolymonToUSer(pseudo,"Polymon_1");
+                    session.setAttribute("polymon","Polymon_1");
+                    resp.sendRedirect("/Projet-1.0/parcours/choixparcours");
                     break;
+                case "choixparcours":
+                    RequestDispatcher choixParcours = req.getRequestDispatcher("/WEB-INF/choixParcours.jsp");
+                    choixParcours.forward(req, resp);
                 default:
                     RequestDispatcher defautHome  = req.getRequestDispatcher("/WEB-INF/userHome.jsp");
                     defautHome.forward(req, resp);

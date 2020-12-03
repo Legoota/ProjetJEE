@@ -1,5 +1,7 @@
 package model;
 
+import org.checkerframework.checker.units.qual.C;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import java.io.Serializable;
 public class Parcours implements Serializable {
     @Id
     private String id;
+    @Column
+    private String ident;
     @Column
     private String nom;
     @Column
@@ -31,6 +35,7 @@ public class Parcours implements Serializable {
     public Parcours(String id, String nom, String description, Step premierChoix){
         super();
         this.id = id;
+        this.ident = id;
         this.nom = nom;
         this.description = description;
         this.choixCourant = premierChoix;
@@ -41,6 +46,12 @@ public class Parcours implements Serializable {
      * @return L'ID du parcours
      */
     public String getId() { return id; }
+
+    /**
+     * Getteur de l'ident du parcours
+     * @return L'ident du parcours
+     */
+    public String getIdent() { return ident; }
 
     /**
      * Getteur du nom du parcours
@@ -65,6 +76,12 @@ public class Parcours implements Serializable {
      * @param id L'ID du parcours
      */
     public void setId(String id) { this.id = id; }
+
+    /**
+     * Setteur de l'ident du parcours
+     * @param id L'ident du parcours
+     */
+    public void setIdent(String id) { this.ident = ident; }
 
     /**
      * Setteur du nom du parcours
