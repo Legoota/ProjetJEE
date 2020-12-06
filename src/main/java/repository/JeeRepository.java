@@ -190,7 +190,7 @@ public class JeeRepository {
 
     /**
      * Méthode permettant de récupérer le <i>Step</i> du parcours par son identifiant
-     * @param ident L'identifiant du parcours
+     * @param ident L'identifiant du <i>Step</i>
      * @return Le <i>Step</i>
      */
     public Step getStepByIdent(String ident) {
@@ -278,20 +278,20 @@ public class JeeRepository {
      * @return
      */
     public Parcours getParcoursFromUser(String pseudo){
-        Parcours p = null;
+        User u = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
-            p = session.query(User.class).whereEquals("pseudo",pseudo).selectFields(Parcours.class,"parcours").firstOrDefault();
+            u = session.query(User.class).whereEquals("pseudo",pseudo).firstOrDefault();
         } catch (Exception e) {
             System.out.println("Erreur : " + e);
         }
-        return p;
+        return u.getParcours();
     }
 
     /**
-     *
-     * @param user
-     * @param parcours
-     * @return
+     * Permet de définir un <i>Parcours</i> en cours pour un user
+     * @param user Le user a qui ajouter le <i>Parcours</i>
+     * @param parcours Le nom du <i>Parcours</i> à ajouter
+     * @return <b>True</b> si le parcours a bien été ajouté, <b>False</b> sinon
      */
     public boolean setParcoursToUser(String user, String parcours){
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
@@ -301,7 +301,7 @@ public class JeeRepository {
             session.saveChanges();
             return true;
         } catch (Exception e) {
-            System.out.println("Erreur : " + e);
+            e.printStackTrace();
         }
         return false;
     }
@@ -320,7 +320,7 @@ public class JeeRepository {
         return parcours;
     }
 
-    public String getIdentByNom(String nom){
+    public String getIdentParcoursByNom(String nom){
         String ident = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
             ident = session.query(Parcours.class).whereEquals("nom",nom).selectFields(String.class,"ident").toString();
