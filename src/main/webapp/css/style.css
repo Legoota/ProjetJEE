@@ -6,6 +6,9 @@
 .pixel {
     font-family: Pixel;
 }
+body{
+    background-image: url("../img/background.jpg")
+}
 
 .foret {
     background-image: url("../img/foret.png");

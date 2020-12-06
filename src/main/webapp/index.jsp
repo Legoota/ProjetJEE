@@ -3,7 +3,7 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/materialize.min.css"  media="screen,projection"/>
     <link title="style" href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet"/>
     <title>Polymon</title>
 </head>
@@ -15,9 +15,8 @@
     <h2 class="center-align pixel">Bienvenue sur le jeu Polymon !</h2>
     <br/>
     <div class="container">
-        <a style="display: block;margin-left: auto;margin-right: auto;width: 10em;" class="waves-effect waves-light btn pixel" href="/Projet-1.0/login/login">Connexion</a>
+        <a style="display: block;margin-left: auto;margin-right: auto;width: 10em;" class="waves-effect waves-light btn pixel white black-text" href="/Projet-1.0/login/login">Connexion</a>
     </div>
     <br/>
-
 </body>
 </html>
