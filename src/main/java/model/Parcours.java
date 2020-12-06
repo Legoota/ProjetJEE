@@ -1,7 +1,5 @@
 package model;
 
-import org.checkerframework.checker.units.qual.C;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -79,9 +77,9 @@ public class Parcours implements Serializable {
 
     /**
      * Setteur de l'ident du parcours
-     * @param id L'ident du parcours
+     * @param ident L'ident du parcours
      */
-    public void setIdent(String id) { this.ident = ident; }
+    public void setIdent(String ident) { this.ident = ident; }
 
     /**
      * Setteur du nom du parcours

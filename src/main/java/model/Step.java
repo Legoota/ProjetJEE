@@ -49,6 +49,8 @@ public class Step implements Serializable {
     @ElementCollection
     private List<String> steps_ids;
 
+    public Step() { super(); }
+
     /**
      * Constructeur de la classe <i>Step</i>
      * @param id L'identifiant de la <i>Step</i>
