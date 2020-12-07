@@ -14,19 +14,16 @@
         <form class="col s12 pixel" method="post">
             <div class="row">
                 <div class="input-field col s12">
-                    <label for="pseudo">Pseudo : </label>
-                    <input type="text" name="pseudo" id="pseudo" required/>
+                    <input type="text" name="pseudo" id="pseudo" required placeholder="Pseudo"/>
                 </div>
                 <div class="input-field col s12">
-                    <label for="password">Mot de passe : </label>
-                    <input type="password" name="password" id="password" required>
+                    <input type="password" name="password" id="password" required placeholder="Password">
                 </div>
             </div>
+            <br/>
+            <input style="background-color: #79c9fa; display: block;margin-left: auto;margin-right: auto;width: 30em;" class="waves-effect waves-light btn pixel black-text" type="submit" />
         </form>
     </div>
-        <br/>
-            <input style="display: block;margin-left: auto;margin-right: auto;width: 30em;" class="waves-effect waves-light btn pixel white black-text" type="submit" />
-        </form>
     </p>
     <br/>
     <a style="display: block;margin-left: auto;margin-right: auto;width: 30em;" class="waves-effect waves-light btn pixel white black-text" href="/Projet-1.0/login/signup">Nouveau joueur ? Inscrivez-vous !</a>
