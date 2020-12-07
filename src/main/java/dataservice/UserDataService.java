@@ -98,8 +98,8 @@ public class UserDataService {
         if(polymons == null) return null;
         if(polymons.size() == 1) return polymons.get(0);
         else {
-            //polymons.remove(ThreadLocalRandom.current().nextInt(0, polymons.size()));
-            //repository.storeNewPolymonFromUserStep(pseudo, polymons);
+            polymons.remove(ThreadLocalRandom.current().nextInt(0, polymons.size()));
+            repository.storeNewPolymonFromUserStep(pseudo, polymons);
             //TODO: correct error: parcours retourne null
 
             return polymons.get(0);

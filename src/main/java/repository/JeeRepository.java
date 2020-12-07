@@ -342,7 +342,9 @@ public class JeeRepository {
     public boolean storeNewPolymonFromUserStep(String pseudo, List<Polymon> polymons) {
         boolean res = false;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
-            Step s = session.query(User.class).whereEquals("pseudo",pseudo).selectFields(Parcours.class,"parcours").selectFields(Step.class,"choixCourant").firstOrDefault();
+            User u = session.query(User.class).whereEquals("pseudo",pseudo).firstOrDefault();
+            Parcours p = u.getParcours();
+            Step s = p.getChoixCourant();
             s.setPolymons(polymons);
             session.saveChanges();
         } catch(Exception e) {
