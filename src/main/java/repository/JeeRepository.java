@@ -262,7 +262,9 @@ public class JeeRepository {
     public Polymon getPolymonFromUser(String user){
         Polymon p = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
-            p = session.query(User.class).whereEquals("pseudo",user).selectFields(Polymon.class,"polymon").firstOrDefault();
+            User u = session.query(User.class).whereEquals("pseudo",user).firstOrDefault();
+            return u.getPolymon();
+
         } catch (Exception e) {
             System.out.println("Erreur : " + e);
         }
