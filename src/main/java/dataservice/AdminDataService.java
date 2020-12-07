@@ -226,7 +226,7 @@ public class AdminDataService {
         Step step_11 = new Step("Step_11", "Grande prairie", "La grande prairie","herbes", step_11_p, step_10_s );
         steps.add(step_11);
 
-        ArrayList<Polymon> step_12_p = new ArrayList<Polymon>() {{add(nosferapti);add(mew);}};
+        ArrayList<Polymon> step_12_p = new ArrayList<Polymon>() {{add(nosferapti);}};
         ArrayList<String> step_12_s = new ArrayList<String>() {{add(step_10.getId());add(step_11.getId());}};
         Step step_12 = new Step("Step_12", "Paturage", "Les paturages","herbes", step_12_p, step_12_s );
         steps.add(step_12);
