@@ -357,10 +357,10 @@ public class JeeRepository {
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
             User u = session.query(User.class).whereEquals("pseudo",pseudo).firstOrDefault();
             Parcours p = u.getParcours();
-            System.out.println("CACA" + p.getDescription());
             Step cur = p.getChoixCourant();
             cur.getPolymons().get(0).setPV(valeur);
             session.saveChanges();
+            res = true;
         }catch(Exception e) {
             System.out.println("Erreur : " + e);
         }
