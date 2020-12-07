@@ -40,7 +40,7 @@ public class AdminDataService {
         Attaque acide = new Attaque("Attaque_1", "Acide",20);
         attaques.add(acide);
 
-        Attaque belier = new Attaque("Attaque_2", "Bélier",30);
+        Attaque belier = new Attaque("Attaque_2", "Belier",30);
         attaques.add(belier);
 
         Attaque cageEclair = new Attaque("Attaque_3", "Cage-Eclair",40);
@@ -52,13 +52,13 @@ public class AdminDataService {
         Attaque coupDeBoule = new Attaque("Attaque_5", "Coup de Boule",25);
         attaques.add(coupDeBoule);
 
-        Attaque deflagration = new Attaque("Attaque_6", "Déflagration",50);
+        Attaque deflagration = new Attaque("Attaque_6", "Deflagration",50);
         attaques.add(deflagration);
 
-        Attaque eclair = new Attaque("Attaque_7", "Éclair",20);
+        Attaque eclair = new Attaque("Attaque_7", "Eclair",20);
         attaques.add(eclair);
 
-        Attaque ecume = new Attaque("Attaque_8", "Écume",20);
+        Attaque ecume = new Attaque("Attaque_8", "Ecume",20);
         attaques.add(ecume);
 
         Attaque frappeAtlas = new Attaque("Attaque_9", "Frappe Atlas",70);
@@ -73,19 +73,19 @@ public class AdminDataService {
         Attaque sangsue = new Attaque("Attaque_12", "Sangsue",70);
         attaques.add(sangsue);
 
-        Attaque seisme = new Attaque("Attaque_13", "Séisme",100);
+        Attaque seisme = new Attaque("Attaque_13", "Seisme",100);
         attaques.add(seisme);
 
-        Attaque comete = new Attaque("Attaque_14", "Comète",110);
+        Attaque comete = new Attaque("Attaque_14", "Comete",110);
         attaques.add(comete);
 
         Attaque ombreNocturne = new Attaque("Attaque_15", "Ombre Nocturne",120);
         attaques.add(ombreNocturne);
 
-        Attaque pique = new Attaque("Attaque_16", "Piqué",80);
+        Attaque pique = new Attaque("Attaque_16", "Pique",80);
         attaques.add(pique);
 
-        Attaque pistoletAEau = new Attaque("Attaque_17", "Pistolet à eau",60);
+        Attaque pistoletAEau = new Attaque("Attaque_17", "Pistolet a eau",60);
         attaques.add(pistoletAEau);
 
         Attaque fouet = new Attaque("Attaque_18", "Fouet",60);
@@ -94,7 +94,7 @@ public class AdminDataService {
         Attaque jetDePierres = new Attaque("Attaque_19", "Jet de pierres",80);
         attaques.add(jetDePierres);
 
-        Attaque piqure = new Attaque("Attaque_20", "Piqûre",20);
+        Attaque piqure = new Attaque("Attaque_20", "Piqure",20);
         attaques.add(piqure);
 
         ArrayList<Attaque> bulbizarre_a = new ArrayList<Attaque>() {{add(piqure);add(acide);}};
@@ -146,11 +146,11 @@ public class AdminDataService {
         polymons.add(magmar);
 
         ArrayList<Attaque> leviator_a = new ArrayList<Attaque>() {{add(hydrocanon);add(seisme);}};
-        Polymon leviator = new Polymon("Polymon_13","Léviator","Léviator est un Polymon à l'allure serpentine avec un long corps principalement bleu à l'exception de son ventre et de quelques une de ses écailles qui sont jaune pâle. Sa bouche aux lèvres jaunes est très large et révèle, une fois grande ouverte, quatre dents pointues. Il a un barbillon et une petite nageoire blanche sur chaque côté de la tête. Il a de petits yeux rouges, une crête bleu foncé sur la tête et quatre nageoires dorsales blanches.",90,leviator_a);
+        Polymon leviator = new Polymon("Polymon_13","Leviator","Léviator est un Polymon à l'allure serpentine avec un long corps principalement bleu à l'exception de son ventre et de quelques une de ses écailles qui sont jaune pâle. Sa bouche aux lèvres jaunes est très large et révèle, une fois grande ouverte, quatre dents pointues. Il a un barbillon et une petite nageoire blanche sur chaque côté de la tête. Il a de petits yeux rouges, une crête bleu foncé sur la tête et quatre nageoires dorsales blanches.",90,leviator_a);
         polymons.add(leviator);
 
         ArrayList<Attaque> ptera_a = new ArrayList<Attaque>() {{add(frappeAtlas);add(fouet);}};
-        Polymon ptera = new Polymon("Polymon_14","Ptéra","Ptéra ressemble à un grand reptile carnassier gris-violet volant grâce à des membranes tendues entre ses doigts, proche du ptérodactyle dont il tire son nom. Ptéra est constitué de roche (dont le poids ne semble étonnement pas l'empêcher de voler), d'où sa classification en Polymon de base de type Roche et Vol.",80,ptera_a);
+        Polymon ptera = new Polymon("Polymon_14","Ptera","Ptéra ressemble à un grand reptile carnassier gris-violet volant grâce à des membranes tendues entre ses doigts, proche du ptérodactyle dont il tire son nom. Ptéra est constitué de roche (dont le poids ne semble étonnement pas l'empêcher de voler), d'où sa classification en Polymon de base de type Roche et Vol.",80,ptera_a);
         polymons.add(ptera);
 
         ArrayList<Attaque> dracolosse_a = new ArrayList<Attaque>() {{add(seisme);add(frappeAtlas);}};
@@ -158,7 +158,7 @@ public class AdminDataService {
         polymons.add(dracolosse);
 
         ArrayList<Attaque> rhinoferos_a = new ArrayList<Attaque>() {{add(frappeAtlas);add(seisme);}};
-        Polymon rhinoferos = new Polymon("Polymon_16","Rhinoféros","Rhinoféros ressemble à un rhinocéros redressé sur ses pattes arrière. Il possède une unique corne sur le museau, qui a un motif en spirale, tel celui d'une foreuse. Il a une longue queue avec les mêmes motifs que sur sa corne.",110,rhinoferos_a);
+        Polymon rhinoferos = new Polymon("Polymon_16","Rhinoferos","Rhinoféros ressemble à un rhinocéros redressé sur ses pattes arrière. Il possède une unique corne sur le museau, qui a un motif en spirale, tel celui d'une foreuse. Il a une longue queue avec les mêmes motifs que sur sa corne.",110,rhinoferos_a);
         polymons.add(rhinoferos);
 
         ArrayList<Attaque> aquali_a = new ArrayList<Attaque>() {{add(ecume);add(hydrocanon);}};
@@ -187,21 +187,21 @@ public class AdminDataService {
         steps.add(step_2);
 
         ArrayList<String> step_3_p = new ArrayList<String>() {{add(magmar.getId());add(sulfura.getId());}};
-        Step step_3 = new Step("Step_3", "Aurore boréale", "L'aurore boréale","boreal", step_3_p, step_2_s );
+        Step step_3 = new Step("Step_3", "Aurore boreale", "L'aurore boreale","boreal", step_3_p, step_2_s );
         steps.add(step_3);
 
         ArrayList<String> step_4_p = new ArrayList<String>() {{add(aquali.getId());add(leviator.getId());}};
         ArrayList<String> step_4_s = new ArrayList<String>() {{add(step_2.getId());add(step_3.getId());}};
-        Step step_4 = new Step("Step_4", "Ocean", "L'océan","eau", step_4_p, step_4_s );
+        Step step_4 = new Step("Step_4", "Ocean", "L'ocean","eau", step_4_p, step_4_s );
         steps.add(step_4);
 
         ArrayList<String> step_5_p = new ArrayList<String>() {{add(aquali.getId());add(psykokwak.getId());}};
-        Step step_5 = new Step("Step_5", "Marécage", "Le marécage","marais", step_5_p, step_4_s );
+        Step step_5 = new Step("Step_5", "Marecage", "Le marecage","marais", step_5_p, step_4_s );
         steps.add(step_5);
 
         ArrayList<String> step_6_p = new ArrayList<String>() {{add(insecateur.getId());add(scarabrute.getId());}};
         ArrayList<String> step_6_s = new ArrayList<String>() {{add(step_4.getId());add(step_5.getId());}};
-        Step step_6 = new Step("Step_6", "Forêt", "La forêt","foret", step_6_p, step_6_s );
+        Step step_6 = new Step("Step_6", "Foret", "La foret","foret", step_6_p, step_6_s );
         steps.add(step_6);
 
         ArrayList<String> step_7_p = new ArrayList<String>() {{add(dracolosse.getId());add(ptera.getId());}};
@@ -231,7 +231,7 @@ public class AdminDataService {
         Step step_12 = new Step("Step_12", "Paturage", "Les paturages","herbes", step_12_p, step_12_s );
         steps.add(step_12);
 
-        Parcours p = new Parcours("Parcours_1", "Kanto", "La première ile de démarrage", step_12);
+        Parcours p = new Parcours("Parcours_1", "Kanto", "La region de Kanto possede des paysages varies, tels que des grottes et des forets. Cette diversite permet à de nombreux Polymon de vivre dans ces differents habitats.", step_12);
         parcours.add(p);
 
         return repository.initializeDatabase(polymons, attaques, steps, parcours);
