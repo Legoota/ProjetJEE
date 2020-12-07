@@ -178,7 +178,7 @@ public class AdminDataService {
         polymons.add(mewtwo);
 
         ArrayList<String> step_1_p = new ArrayList<String>() {{add(mew.getId());add(mewtwo.getId());}};
-        Step step_1 = new Step("Step_1", "Espace", "La voie lactée","espace", step_1_p, null );
+        Step step_1 = new Step("Step_1", "Espace", "La voie lactee","espace", step_1_p, null );
         steps.add(step_1);
 
         ArrayList<String> step_2_p = new ArrayList<String>() {{add(rhinoferos.getId());add(sulfura.getId());}};
