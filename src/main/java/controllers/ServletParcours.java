@@ -73,7 +73,7 @@ public class ServletParcours extends HttpServlet {
                     userParcours.forward(req,resp);
                     break;
                 case "step/new":
-                    session.setAttribute("adversaire",plds.getPolymonAdverse(uds.getParcoursFromUser(pseudo).getChoixCourant().getIdent()));
+                    uds.getPolymonAdverseFromUser(pseudo);
                     RequestDispatcher userStepNew = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
                     userStepNew.forward(req,resp);
                     break;

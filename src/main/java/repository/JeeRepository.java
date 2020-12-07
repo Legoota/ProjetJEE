@@ -342,12 +342,11 @@ public class JeeRepository {
     public boolean storeNewPolymonFromUserStep(String pseudo, List<Polymon> polymons) {
         boolean res = false;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
-            Parcours p = session.query(User.class).whereEquals("pseudo",pseudo).selectFields(Parcours.class,"parcours").firstOrDefault();
-            p.getChoixCourant().setPolymons(null);
-            p.getChoixCourant().setPolymons(polymons);
+            Step s = session.query(User.class).whereEquals("pseudo",pseudo).selectFields(Parcours.class,"parcours").selectFields(Step.class,"choixCourant").firstOrDefault();
+            s.setPolymons(polymons);
             session.saveChanges();
         } catch(Exception e) {
-            System.out.println("Erreur : " + e);
+            e.printStackTrace();
         }
         return res;
     }

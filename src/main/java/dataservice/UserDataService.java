@@ -101,12 +101,17 @@ public class UserDataService {
         if(polymons == null) return null;
         if(polymons.size() == 1) return polymons.get(0);
         else {
-            //TODO: Add polymon object dans User object
-            //TODO: correct random et suppression polymon
-            polymons.remove(ThreadLocalRandom.current().nextInt(0, polymons.size()));
-            repository.storeNewPolymonFromUserStep(pseudo, polymons);
+            //polymons.remove(ThreadLocalRandom.current().nextInt(0, polymons.size()));
+            //repository.storeNewPolymonFromUserStep(pseudo, polymons);
+            //TODO: correct error: parcours retourne null
+
             return polymons.get(0);
         }
+    }
+
+    public int getCurrentPourcentagePolymonLife(String nomPolymon, int pvCourant){
+        int defaut = repository.getPolymonByNom(nomPolymon).getPV();
+        return pvCourant*100/defaut;
     }
 
     /**
