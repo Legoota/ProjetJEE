@@ -42,7 +42,7 @@ public class Step implements Serializable {
      * La liste des <i>Polymons</i> trouvables dans cette Step
      */
     @ElementCollection
-    private List<String> polymon_ids;
+    private List<Polymon> polymons;
     /**
      * La liste des propositions de lieux suivants
      */
@@ -56,17 +56,17 @@ public class Step implements Serializable {
      * @param id L'identifiant de la <i>Step</i>
      * @param nom Le nom de la <i>Step</i>
      * @param description La description de la <i>Step</i>
-     * @param polymon_ids La liste de <i>Polymons</i> de la <i>Step</i>
+     * @param polymons La liste de <i>Polymons</i> de la <i>Step</i>
      * @param steps_ids La liste des <i>Steps</i> suivantes
      */
-    public Step(String id, String nom, String description, String env, List<String> polymon_ids, List<String> steps_ids) {
+    public Step(String id, String nom, String description, String env, List<Polymon> polymons, List<String> steps_ids) {
         this.id = id;
         this.ident = id;
         this.nom = nom;
         this.description = description;
         this.typeEnv = env;
-        this.polymon_ids = new ArrayList<>();
-        this.polymon_ids = polymon_ids;
+        this.polymons = new ArrayList<>();
+        this.polymons = polymons;
         this.steps_ids = new ArrayList<>();
         this.steps_ids = steps_ids;
     }
@@ -105,7 +105,7 @@ public class Step implements Serializable {
      * Getteur de la liste de <i>Polymons</i> de la <i>Step</i>
      * @return La liste de <i>Polymons</i> de la <i>Step</i>
      */
-    public List<String> getPolymons() { return polymon_ids; }
+    public List<Polymon> getPolymons() { return polymons; }
 
     /**
      * Getteur de la liste des <i>Steps</i> suivantes
@@ -147,7 +147,7 @@ public class Step implements Serializable {
      * Setteur de la liste de <i>Polymons</i> de la <i>Step</i>
      * @param polymons La liste de <i>Polymons</i> de la <i>Step</i>
      */
-    public void setPolymons(List<String> polymons) { this.polymon_ids = polymons; }
+    public void setPolymons(List<Polymon> polymons) { this.polymons = polymons; }
 
     /**
      * Setteur de la liste des <i>Steps</i> suivantes

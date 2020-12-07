@@ -9,6 +9,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import java.io.*;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Classe DataService pour les fonctionnalités liées aux <i>Polymons</i>
@@ -50,4 +51,11 @@ public class PolymonDataService {
     }
 
     public List<Attaque> getAttaquesByNom(String nom) { return getPolymonByNom(nom).getAttaques(); }
+
+    public Polymon getPolymonAdverse(String stepIdent) {
+        List<Polymon> polymons = repository.getPolymonsByStepIdent(stepIdent);
+        if(polymons == null) return null;
+        if(polymons.size() == 1) return polymons.get(0);
+        else return polymons.get(ThreadLocalRandom.current().nextInt(0, polymons.size()));
+    }
 }

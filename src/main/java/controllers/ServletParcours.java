@@ -41,9 +41,10 @@ public class ServletParcours extends HttpServlet {
             }
             HttpSession session = req.getSession();
             session.setAttribute("pds", pds);
+            session.setAttribute("uds",uds);
+            session.setAttribute("plds",plds);
             switch (route) {
                 case "nouveau":
-                    session.setAttribute("plds",plds);
                     RequestDispatcher nouveauParcours  = req.getRequestDispatcher("/WEB-INF/choixPolymon.jsp");
                     nouveauParcours.forward(req, resp);
                     break;
@@ -65,12 +66,17 @@ public class ServletParcours extends HttpServlet {
                 case "choixparcours":
                     RequestDispatcher choixParcours = req.getRequestDispatcher("/WEB-INF/choixParcours.jsp");
                     choixParcours.forward(req, resp);
+                    break;
                 case "aventure/Kanto":
                     uds.addParcoursToUser(pseudo, "Parcours_1");
-                    System.out.println(uds.getCurrentStep(pseudo).getPolymons());
-                    /*
                     RequestDispatcher userParcours = req.getRequestDispatcher("/WEB-INF/userParcours.jsp");
-                    userParcours.forward(req,resp);*/
+                    userParcours.forward(req,resp);
+                    break;
+                case "step/new":
+                    session.setAttribute("adversaire",plds.getPolymonAdverse(uds.getParcoursFromUser(pseudo).getChoixCourant().getIdent()));
+                    RequestDispatcher userStepNew = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
+                    userStepNew.forward(req,resp);
+                    break;
                 default:
                     RequestDispatcher defautHome  = req.getRequestDispatcher("/WEB-INF/userHome.jsp");
                     defautHome.forward(req, resp);

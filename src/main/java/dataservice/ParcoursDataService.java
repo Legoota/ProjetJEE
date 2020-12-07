@@ -1,6 +1,7 @@
 package dataservice;
 
 import model.Polymon;
+import model.Step;
 import repository.JeeRepository;
 
 import javax.ejb.LocalBean;
@@ -44,4 +45,6 @@ public class ParcoursDataService {
      * @return La description du <i>Parcours</i>
      */
     public String getDescriptionForParcours(String nom) { return repository.getDescriptionForParcours(nom); }
+
+    public Step getStepFromIdent(String ident) { return repository.getStepByIdent(ident); }
 }

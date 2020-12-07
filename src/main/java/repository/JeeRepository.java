@@ -264,7 +264,7 @@ public class JeeRepository {
     public Polymon getPolymonFromUser(String user){
         Polymon p = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
-            String ident = session.query(User.class).whereEquals("pseudo",user).selectFields(Polymon.class,"polymon").toString();
+            String ident = session.query(User.class).whereEquals("pseudo",user).selectFields(String.class,"polymon").firstOrDefault();
             p = session.query(Polymon.class).whereEquals("ident",ident).firstOrDefault();
         } catch (Exception e) {
             System.out.println("Erreur : " + e);

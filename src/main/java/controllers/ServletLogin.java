@@ -43,6 +43,8 @@ public class ServletLogin extends HttpServlet {
                     userCookie.setPath("/");
                     userCookie.setMaxAge(0);
                     resp.addCookie(userCookie);
+                    HttpSession session = req.getSession();
+                    session.invalidate();
                     RequestDispatcher logoutVue  = req.getRequestDispatcher("/WEB-INF/logout.jsp");
                     logoutVue.forward(req, resp);
                     break;

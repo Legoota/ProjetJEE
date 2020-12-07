@@ -69,6 +69,12 @@ public class UserDataService {
         return repository.addPolymonToUser(user,polymon);
     }
 
+    /**
+     *
+     * @param user
+     * @param parcours
+     * @return
+     */
     public boolean addParcoursToUser(String user, String parcours) { return repository.setParcoursToUser(user,parcours); }
 
     /**

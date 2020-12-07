@@ -177,56 +177,56 @@ public class AdminDataService {
         Polymon mewtwo = new Polymon("Polymon_20","Mewtwo","Comme Mewtwo a été créé à partir de Mew, il est également à mi-chemin entre le chat (pour la tête) et la gerboise (pour le reste du corps), à la différence qu'il mesure 2 mètres et a des membres plus longs que ceux de Mew, lui donnant une apparence presque humanoïde. Il se déplace la plupart du temps en lévitant. Mewtwo est un Polymon principalement mauve (ou blanc selon les versions). Il possède une longue queue violette qui remonte jusqu'au bas de son ventre.",150,mewtwo_a);
         polymons.add(mewtwo);
 
-        ArrayList<String> step_1_p = new ArrayList<String>() {{add(mew.getId());add(mewtwo.getId());}};
+        ArrayList<Polymon> step_1_p = new ArrayList<Polymon>() {{add(mew);add(mewtwo);}};
         Step step_1 = new Step("Step_1", "Espace", "La voie lactee","espace", step_1_p, null );
         steps.add(step_1);
 
-        ArrayList<String> step_2_p = new ArrayList<String>() {{add(rhinoferos.getId());add(sulfura.getId());}};
+        ArrayList<Polymon> step_2_p = new ArrayList<Polymon>() {{add(rhinoferos);add(sulfura);}};
         ArrayList<String> step_2_s = new ArrayList<String>() {{add(step_1.getId());}};
         Step step_2 = new Step("Step_2", "Volcan", "Le volcan","feu", step_2_p, step_2_s );
         steps.add(step_2);
 
-        ArrayList<String> step_3_p = new ArrayList<String>() {{add(magmar.getId());add(sulfura.getId());}};
+        ArrayList<Polymon> step_3_p = new ArrayList<Polymon>() {{add(magmar);add(sulfura);}};
         Step step_3 = new Step("Step_3", "Aurore boreale", "L'aurore boreale","boreal", step_3_p, step_2_s );
         steps.add(step_3);
 
-        ArrayList<String> step_4_p = new ArrayList<String>() {{add(aquali.getId());add(leviator.getId());}};
+        ArrayList<Polymon> step_4_p = new ArrayList<Polymon>() {{add(aquali);add(leviator);}};
         ArrayList<String> step_4_s = new ArrayList<String>() {{add(step_2.getId());add(step_3.getId());}};
         Step step_4 = new Step("Step_4", "Ocean", "L'ocean","eau", step_4_p, step_4_s );
         steps.add(step_4);
 
-        ArrayList<String> step_5_p = new ArrayList<String>() {{add(aquali.getId());add(psykokwak.getId());}};
+        ArrayList<Polymon> step_5_p = new ArrayList<Polymon>() {{add(aquali);add(psykokwak);}};
         Step step_5 = new Step("Step_5", "Marecage", "Le marecage","marais", step_5_p, step_4_s );
         steps.add(step_5);
 
-        ArrayList<String> step_6_p = new ArrayList<String>() {{add(insecateur.getId());add(scarabrute.getId());}};
+        ArrayList<Polymon> step_6_p = new ArrayList<Polymon>() {{add(insecateur);add(scarabrute);}};
         ArrayList<String> step_6_s = new ArrayList<String>() {{add(step_4.getId());add(step_5.getId());}};
         Step step_6 = new Step("Step_6", "Foret", "La foret","foret", step_6_p, step_6_s );
         steps.add(step_6);
 
-        ArrayList<String> step_7_p = new ArrayList<String>() {{add(dracolosse.getId());add(ptera.getId());}};
+        ArrayList<Polymon> step_7_p = new ArrayList<Polymon>() {{add(dracolosse);add(ptera);}};
         Step step_7 = new Step("Step_7", "Grotte", "La grotte","grotte", step_7_p, step_6_s );
         steps.add(step_7);
 
-        ArrayList<String> step_8_p = new ArrayList<String>() {{add(psykokwak.getId());add(noeunoeuf.getId());}};
+        ArrayList<Polymon> step_8_p = new ArrayList<Polymon>() {{add(psykokwak);add(noeunoeuf);}};
         ArrayList<String> step_8_s = new ArrayList<String>() {{add(step_6.getId());add(step_7.getId());}};
         Step step_8 = new Step("Step_8", "Marais", "Le marais","marais", step_8_p, step_8_s );
         steps.add(step_8);
 
-        ArrayList<String> step_9_p = new ArrayList<String>() {{add(miaouss.getId());add(goupix.getId());}};
+        ArrayList<Polymon> step_9_p = new ArrayList<Polymon>() {{add(miaouss);add(goupix);}};
         Step step_9 = new Step("Step_9", "Hautes herbes", "Les hautes herbes","herbes", step_9_p, step_8_s );
         steps.add(step_9);
 
-        ArrayList<String> step_10_p = new ArrayList<String>() {{add(nosferapti.getId());add(pikachu.getId());}};
+        ArrayList<Polymon> step_10_p = new ArrayList<Polymon>() {{add(nosferapti);add(pikachu);}};
         ArrayList<String> step_10_s = new ArrayList<String>() {{add(step_8.getId());add(step_9.getId());}};
         Step step_10 = new Step("Step_10", "Caverne", "La caverne","grotte", step_10_p, step_10_s );
         steps.add(step_10);
 
-        ArrayList<String> step_11_p = new ArrayList<String>() {{add(miaouss.getId());add(goupix.getId());}};
+        ArrayList<Polymon> step_11_p = new ArrayList<Polymon>() {{add(miaouss);add(goupix);}};
         Step step_11 = new Step("Step_11", "Grande prairie", "La grande prairie","herbes", step_11_p, step_10_s );
         steps.add(step_11);
 
-        ArrayList<String> step_12_p = new ArrayList<String>() {{add(nosferapti.getId());}};
+        ArrayList<Polymon> step_12_p = new ArrayList<Polymon>() {{add(nosferapti);}};
         ArrayList<String> step_12_s = new ArrayList<String>() {{add(step_10.getId());add(step_11.getId());}};
         Step step_12 = new Step("Step_12", "Paturage", "Les paturages","herbes", step_12_p, step_12_s );
         steps.add(step_12);
