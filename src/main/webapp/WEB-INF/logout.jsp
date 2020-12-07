@@ -1,10 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Déconnexion</title>
+    <meta charset="UTF-8">
+    <title>Deconnexion</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/materialize.min.css"  media="screen,projection"/>
+    <link title="style" href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>Vous êtes déconnecté.</h1>
-    <a href="/Projet-1.0/login/login">Reconnexion</a>
+    <h2 class="center-align pixel">Vous etes deconnecte.</h2>
+    <a style="display: block;margin-left: auto;margin-right: auto;width: 30em;" class="waves-effect waves-light btn pixel white black-text" href="/Projet-1.0/login/login">Reconnexion</a>
 </body>
 </html>
