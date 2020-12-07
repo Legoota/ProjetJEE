@@ -231,7 +231,7 @@ public class AdminDataService {
         Step step_12 = new Step("Step_12", "Paturage", "Les paturages","herbes", step_12_p, step_12_s );
         steps.add(step_12);
 
-        Parcours p = new Parcours("Parcours_1", "Kanto", "La region de Kanto possede des paysages varies, tels que des grottes et des forets. Cette diversite permet à de nombreux Polymon de vivre dans ces differents habitats.", step_12);
+        Parcours p = new Parcours("Parcours_1", "Kanto", "La région de Kanto possède des paysages variés, tels que des grottes et des forêts. Cette diversité permet à de nombreux Polymon de vivre dans ces différents habitats.", step_12);
         parcours.add(p);
 
         return repository.initializeDatabase(polymons, attaques, steps, parcours);
