@@ -33,14 +33,16 @@
             <div class="col s3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="images/sample-1.jpg">
-                        <span class="card-title">${sessionScope.adversaire.getNom()}</span>
+                        <img src="data:image/jpg;base64,${sessionScope.plds.getImageByNom(sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom())}" width="250" height="250"/>
+                        <span class="card-title black-text pixel">${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom()}</span>
                     </div>
                     <div class="card-content">
-                        <p>${sessionScope.adversaire.getPV()}</p>
+                        <p>PV : ${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getPV()}</p>
                     </div>
                     <div class="card-action">
-                        <a href="#">This is a link</a>
+                        <c:forEach items="${sessionScope.plds.getAttaquesByNom(sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom())}" var="item">
+                            <a class="pixel" href="#">${item.getNom()} (${item.getDegats()})</a>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

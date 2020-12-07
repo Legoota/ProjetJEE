@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Classe DataService pour les fonctionnalités liées aux <i>Users</i>
@@ -93,6 +94,19 @@ public class UserDataService {
      */
     public Polymon getPolymonFromUser(String pseudo){
         return repository.getPolymonFromUser(pseudo);
+    }
+
+    public Polymon getPolymonAdverseFromUser(String pseudo) {
+        List<Polymon> polymons = repository.getParcoursFromUser(pseudo).getChoixCourant().getPolymons();
+        if(polymons == null) return null;
+        if(polymons.size() == 1) return polymons.get(0);
+        else {
+            //TODO: Add polymon object dans User object
+            //TODO: correct random et suppression polymon
+            polymons.remove(ThreadLocalRandom.current().nextInt(0, polymons.size()));
+            repository.storeNewPolymonFromUserStep(pseudo, polymons);
+            return polymons.get(0);
+        }
     }
 
     /**

@@ -355,4 +355,17 @@ public class JeeRepository {
         }
         return "Description du parcours";
     }
+
+    public boolean storeNewPolymonFromUserStep(String pseudo, List<Polymon> polymons) {
+        boolean res = false;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            Parcours p = session.query(User.class).whereEquals("pseudo",pseudo).selectFields(Parcours.class,"parcours").firstOrDefault();
+            p.getChoixCourant().setPolymons(null);
+            p.getChoixCourant().setPolymons(polymons);
+            session.saveChanges();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return res;
+    }
 }
