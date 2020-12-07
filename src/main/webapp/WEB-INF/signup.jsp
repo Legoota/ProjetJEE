@@ -7,7 +7,7 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/materialize.min.css"  media="screen,projection"/>
     <link title="style" href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet"/>
 </head>
-<body>
+<body class="background">
     <h2 class="center-align pixel">Inscription</h2>
     <div style="background: #FFFFFF; margin-left: auto; margin-right: auto; width: 42.5em; border-radius: 5px; box-shadow: 1px 1px 1px black; padding: 10px">
         <form class="col s12 pixel" method="post">

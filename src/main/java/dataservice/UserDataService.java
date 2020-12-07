@@ -2,6 +2,7 @@ package dataservice;
 
 import model.Parcours;
 import model.Polymon;
+import model.Step;
 import model.User;
 import repository.JeeRepository;
 
@@ -86,6 +87,17 @@ public class UserDataService {
      */
     public Polymon getPolymonFromUser(String pseudo){
         return repository.getPolymonFromUser(pseudo);
+    }
+
+    /**
+     *
+     * @param pseudo
+     * @return
+     */
+    public Step getCurrentStep(String pseudo) {
+        Parcours user_parcours = repository.getParcoursFromUser(pseudo);
+        if(user_parcours == null) return null;
+        return user_parcours.getChoixCourant();
     }
 
     /**

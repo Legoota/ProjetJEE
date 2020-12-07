@@ -329,4 +329,30 @@ public class JeeRepository {
         }
         return ident;
     }
+
+    /**
+     *
+     * @param ident
+     * @return
+     */
+    public List<Polymon> getPolymonByStep(String ident) {
+        List<Polymon> polymons = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            Step step = session.query(Step.class).whereEquals("ident",ident).firstOrDefault();
+            polymons = session.query(Polymon.class).containsAny("ident",step.getPolymons()).toList();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return polymons;
+    }
+
+    public String getDescriptionForParcours(String nom) {
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            Parcours p = session.query(Parcours.class).whereEquals("nom",nom).firstOrDefault();
+            if(p != null) return p.getDescription();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return "Description du parcours";
+    }
 }

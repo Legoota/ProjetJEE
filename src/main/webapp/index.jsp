@@ -7,7 +7,7 @@
     <link title="style" href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet"/>
     <title>Polymon</title>
 </head>
-<body>
+<body class="background">
     <br/>
     <div>
         <img style="display: block;margin-left: auto;margin-right: auto;" src="${pageContext.request.contextPath}/img/polymon.png" alt="Logo Polymon">

@@ -7,7 +7,7 @@
     <link title="style" href="${pageContext.request.contextPath}/css/style.css" type="text/css" rel="stylesheet"/>
     <title>Connexion</title>
 </head>
-<body>
+<body class="background">
     <h2 class="center-align pixel">Connexion</h2>
     <br/>
     <p>
@@ -15,7 +15,7 @@
         <form class="col s12 pixel" method="post">
             <label for="pseudo">Prenom : </label>
             <input type="text" name="pseudo" id="pseudo" required/>
-            <label for="password">Prenom : </label>
+            <label for="password">Mot de passe : </label>
             <input type="password" name="password" id="password" required>
             <input style="background-color: #79c9fa; display: block;margin-left: auto;margin-right: auto;width: 30em;" class="waves-effect waves-light btn pixel black-text" type="submit" />
         </form>

@@ -67,6 +67,7 @@ public class ServletParcours extends HttpServlet {
                     choixParcours.forward(req, resp);
                 case "aventure/Kanto":
                     uds.addParcoursToUser(pseudo, "Parcours_1");
+                    System.out.println(uds.getCurrentStep(pseudo).getPolymons());
                     /*
                     RequestDispatcher userParcours = req.getRequestDispatcher("/WEB-INF/userParcours.jsp");
                     userParcours.forward(req,resp);*/

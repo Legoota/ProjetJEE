@@ -6,7 +6,8 @@
 .pixel {
     font-family: Pixel;
 }
-body{
+
+.background {
     background-image: url("../img/background.jpg")
 }
 

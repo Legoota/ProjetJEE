@@ -1,5 +1,6 @@
 package dataservice;
 
+import model.Attaque;
 import model.Polymon;
 import org.apache.commons.codec.binary.Base64;
 import repository.JeeRepository;
@@ -7,6 +8,7 @@ import repository.JeeRepository;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import java.io.*;
+import java.util.List;
 
 /**
  * Classe DataService pour les fonctionnalités liées aux <i>Polymons</i>
@@ -46,5 +48,6 @@ public class PolymonDataService {
 
         return imageStr;
     }
-}
 
+    public List<Attaque> getAttaquesByNom(String nom) { return getPolymonByNom(nom).getAttaques(); }
+}
