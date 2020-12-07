@@ -12,15 +12,10 @@
     <p>
     <div style="background: #FFFFFF; margin-left: auto; margin-right: auto; width: 42.5em; border-radius: 5px; box-shadow: 1px 1px 1px black; padding: 10px">
         <form class="col s12 pixel" method="post">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="pseudo" id="pseudo" required placeholder="Pseudo"/>
-                </div>
-                <div class="input-field col s12">
-                    <input type="password" name="password" id="password" required placeholder="Password">
-                </div>
-            </div>
-            <br/>
+            <label for="pseudo">Prenom : </label>
+            <input type="text" name="pseudo" id="pseudo" required/>
+            <label for="password">Prenom : </label>
+            <input type="password" name="password" id="password" required>
             <input style="background-color: #79c9fa; display: block;margin-left: auto;margin-right: auto;width: 30em;" class="waves-effect waves-light btn pixel black-text" type="submit" />
         </form>
     </div>
