@@ -66,7 +66,7 @@ public class UserDataService {
      * @param polymon Le <i>Polymon</i> à ajouter au joueur
      * @return <i>true</i> si le <i>Polymon</i> à été ajouté, <i>false</i> sinon
      */
-    public boolean addPolymonToUser(String user, String polymon){
+    public boolean addPolymonToUser(String user, Polymon polymon){
         return repository.addPolymonToUser(user,polymon);
     }
 

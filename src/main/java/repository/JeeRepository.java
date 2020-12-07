@@ -212,10 +212,8 @@ public class JeeRepository {
      */
     public List<Polymon> getPolymonsByStepIdent(String ident){
         List<Polymon> polymons = null;
-
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
-            List<String> polymon_ids = session.query(Step.class).whereEquals("ident",ident).selectFields(String.class,"polymons").toList();
-            polymons = session.query(Polymon.class).containsAny("ident",polymon_ids).toList();
+             polymons = session.query(Step.class).whereEquals("ident",ident).selectFields(Polymon.class,"polymons").toList();
         } catch (Exception e) {
             System.out.println("Erreur : " + e);
         }
@@ -244,7 +242,7 @@ public class JeeRepository {
      * @param polymon Le <i>Polymon</i> à ajouter
      * @return <i>true</i> si le <i>Polymon</i> à été ajouté, <i>false</i> sinon
      */
-    public boolean addPolymonToUser(String user, String polymon){
+    public boolean addPolymonToUser(String user, Polymon polymon){
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
             User u = session.query(User.class).whereEquals("pseudo",user).firstOrDefault();
             u.setPolymon(polymon);
@@ -264,8 +262,7 @@ public class JeeRepository {
     public Polymon getPolymonFromUser(String user){
         Polymon p = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
-            String ident = session.query(User.class).whereEquals("pseudo",user).selectFields(String.class,"polymon").firstOrDefault();
-            p = session.query(Polymon.class).whereEquals("ident",ident).firstOrDefault();
+            p = session.query(User.class).whereEquals("pseudo",user).selectFields(Polymon.class,"polymon").firstOrDefault();
         } catch (Exception e) {
             System.out.println("Erreur : " + e);
         }
@@ -328,22 +325,6 @@ public class JeeRepository {
             System.out.println("Erreur : " + e);
         }
         return ident;
-    }
-
-    /**
-     *
-     * @param ident
-     * @return
-     */
-    public List<Polymon> getPolymonByStep(String ident) {
-        List<Polymon> polymons = null;
-        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
-            Step step = session.query(Step.class).whereEquals("ident",ident).firstOrDefault();
-            polymons = session.query(Polymon.class).containsAny("ident",step.getPolymons()).toList();
-        } catch(Exception e) {
-            System.out.println("Erreur : " + e);
-        }
-        return polymons;
     }
 
     public String getDescriptionForParcours(String nom) {

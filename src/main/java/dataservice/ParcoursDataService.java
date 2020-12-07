@@ -37,7 +37,7 @@ public class ParcoursDataService {
      * @param stepIdent L'ident de la <i>Step</i>
      * @return La liste de <i>Polymon</i>
      */
-    public List<Polymon> getAllPolymonByStep(String stepIdent) { return repository.getPolymonByStep(stepIdent);}
+    public List<Polymon> getAllPolymonByStep(String stepIdent) { return repository.getPolymonsByStepIdent(stepIdent);}
 
     /**
      * Méthode permettant de récupérer la description pour un <i>Parcours</i>>

@@ -49,17 +49,17 @@ public class ServletParcours extends HttpServlet {
                     nouveauParcours.forward(req, resp);
                     break;
                 case "starter/carapuce":
-                    uds.addPolymonToUser(pseudo,"Polymon_3");
+                    uds.addPolymonToUser(pseudo,plds.getPolymonByNom("Carapuce"));
                     session.setAttribute("polymon","Polymon_3");
                     resp.sendRedirect("/Projet-1.0/parcours/choixparcours");
                     break;
                 case "starter/salameche":
-                    uds.addPolymonToUser(pseudo,"Polymon_2");
+                    uds.addPolymonToUser(pseudo,plds.getPolymonByNom("Salameche"));
                     session.setAttribute("polymon","Polymon_2");
                     resp.sendRedirect("/Projet-1.0/parcours/choixparcours");
                     break;
                 case "starter/bulbizarre":
-                    uds.addPolymonToUser(pseudo,"Polymon_1");
+                    uds.addPolymonToUser(pseudo,plds.getPolymonByNom("Bulbizarre"));
                     session.setAttribute("polymon","Polymon_1");
                     resp.sendRedirect("/Projet-1.0/parcours/choixparcours");
                     break;
