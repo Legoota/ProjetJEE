@@ -346,8 +346,25 @@ public class JeeRepository {
             s.setPolymons(polymons);
             session.saveChanges();
         } catch(Exception e) {
-            e.printStackTrace();
+            System.out.println("Erreur : " + e);
+            //TODO: Reparer ici
         }
+        return res;
+    }
+
+    public boolean setPolymonAdversePv(String pseudo, int valeur) {
+        boolean res = false;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            User u = session.query(User.class).whereEquals("pseudo",pseudo).firstOrDefault();
+            Parcours p = u.getParcours();
+            System.out.println("CACA" + p.getDescription());
+            Step cur = p.getChoixCourant();
+            cur.getPolymons().get(0).setPV(valeur);
+            session.saveChanges();
+        }catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+
         return res;
     }
 }

@@ -77,6 +77,14 @@ public class ServletParcours extends HttpServlet {
                     RequestDispatcher userStepNew = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
                     userStepNew.forward(req,resp);
                     break;
+                case "step/attaque/0":
+                    uds.hitPolymonAdverseFromUser(pseudo,plds.getAttaquesByNom(uds.getPolymonFromUser(pseudo).getNom()).get(0).getDegats());
+                    resp.sendRedirect("/Projet-1.0/parcours/step/new");
+                    break;
+                case "step/attaque/1":
+                    uds.hitPolymonAdverseFromUser(pseudo,plds.getAttaquesByNom(uds.getPolymonFromUser(pseudo).getNom()).get(1).getDegats());
+                    resp.sendRedirect("/Projet-1.0/parcours/step/new");
+                    break;
                 default:
                     RequestDispatcher defautHome  = req.getRequestDispatcher("/WEB-INF/userHome.jsp");
                     defautHome.forward(req, resp);

@@ -1,9 +1,6 @@
 package dataservice;
 
-import model.Parcours;
-import model.Polymon;
-import model.Step;
-import model.User;
+import model.*;
 import repository.JeeRepository;
 
 import javax.ejb.LocalBean;
@@ -123,6 +120,30 @@ public class UserDataService {
         Parcours user_parcours = repository.getParcoursFromUser(pseudo);
         if(user_parcours == null) return null;
         return user_parcours.getChoixCourant();
+    }
+
+    public int numeroAttaque(String pseudo, String nomAttaque) {
+        Polymon courant = getPolymonFromUser(pseudo);
+        int res = 0;
+        for(Attaque a : courant.getAttaques()) {
+            if(nomAttaque.equals(a.getNom())) return res;
+            res++;
+        }
+        return res;
+    }
+
+    public boolean hitPolymonAdverseFromUser(String pseudo, int degats) {
+        Polymon adverse = getPolymonAdverseFromUser(pseudo);
+        boolean res;
+        if(adverse.getPV() - degats < 0) {
+            res = true;
+            repository.setPolymonAdversePv(pseudo,0);
+        }
+        else {
+            res = false;
+            repository.setPolymonAdversePv(pseudo, adverse.getPV() - degats);
+        }
+        return res;
     }
 
     /**

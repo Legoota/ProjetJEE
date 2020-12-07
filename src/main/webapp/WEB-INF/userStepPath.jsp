@@ -21,13 +21,12 @@
                     <div class="card-content">
                         <p>PV : ${sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getPV()}</p>
                         <div class="progress blue lighten-4">
-                            <span>Pourcent</span>
                             <div class="determinate blue" style="width: ${sessionScope.uds.getCurrentPourcentagePolymonLife(sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom(),sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getPV())}%; animation: grow 2s;"></div>
                         </div>
                     </div>
                     <div class="card-action">
                         <c:forEach items="${sessionScope.plds.getAttaquesByNom(sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom())}" var="item">
-                            <a class="pixel" href="#">${item.getNom()} (${item.getDegats()})</a>
+                            <a class="pixel" href="/Projet-1.0/parcours/step/attaque/${sessionScope.uds.numeroAttaque(cookie['pseudo'].value,item.getNom())}">${item.getNom()} (${item.getDegats()})</a>
                         </c:forEach>
                     </div>
                 </div>
@@ -43,17 +42,25 @@
                     <div class="card-content">
                         <p>PV : ${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getPV()}</p>
                         <div class="progress blue lighten-4">
-                            <span>Pourcent</span>
                             <div class="determinate blue" style="width: ${sessionScope.uds.getCurrentPourcentagePolymonLife(sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom(),sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getPV())}%; animation: grow 2s;"></div>
                         </div>
                     </div>
-                    <div class="card-action">
-                        <c:forEach items="${sessionScope.plds.getAttaquesByNom(sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom())}" var="item">
-                            <a class="pixel" href="#">${item.getNom()} (${item.getDegats()})</a>
-                        </c:forEach>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title pixel">Que voulez-vous faire ?</span>
+                        <p class="pixel">Selectionnez une des deux attaques que votre ${sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom()} va realiser sur ${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom()}</p>
                     </div>
                 </div>
             </div>
+            <div class="col s3"></div>
         </div>
     </div>
 
