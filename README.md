@@ -9,11 +9,11 @@ The main goal was to realise a JEE application about fighting monsters.
 ### Features
 
 ###### TBA:
-*Add healing system
-*Add dodge probability
-*Redo image storage
-*Add other parcours
-*Add the possibility to change attacks
+* Add healing system
+* Add dodge probability
+* Redo image storage
+* Add other parcours
+* Add the possibility to change attacks
 
 ###### Working:
 * Account creation
