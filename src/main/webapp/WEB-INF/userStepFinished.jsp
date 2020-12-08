@@ -14,21 +14,38 @@
     <div class="container">
         <div class="row">
             <div class="col s1"></div>
-        <c:forEach items="${sessionScope.uds.getNextStepNameByStepIdent(cookie['pseudo'].value)}" var="item">
+            <c:choose>
+                <c:when test="${sessionScope.uds.getNextStepNameByStepIdent(cookie['pseudo'].value) != null}">
+                    <c:forEach items="${sessionScope.uds.getNextStepNameByStepIdent(cookie['pseudo'].value)}" var="item">
 
-                <div class="col s4">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title pixel">${sessionScope.uds.getStepFromStepIdent(item).getNom()}</span>
-                            <p class="pixel">${sessionScope.uds.getStepFromStepIdent(item).getDescription()}</p>
+                        <div class="col s4">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title pixel">${sessionScope.uds.getStepFromStepIdent(item).getNom()}</span>
+                                    <p class="pixel">${sessionScope.uds.getStepFromStepIdent(item).getDescription()}</p>
+                                </div>
+                                <div class="card-action">
+                                    <a class="pixel" href="/Projet-1.0/parcours/step/choose/${sessionScope.uds.numeroStepIdent(cookie['pseudo'].value,item)}">Choisir ce lieu</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-action">
-                            <a class="pixel" href="/Projet-1.0/parcours/step/choose/${sessionScope.uds.numeroStepIdent(cookie['pseudo'].value,item)}">Choisir ce lieu</a>
+                        <div class="col s1"></div>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <div class="col s10">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title pixel">Victoire !</span>
+                                <p class="pixel">Felicitations, vous avez vaincu le Polymon final ! Vous pouvez etre fier de votre ${sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom()} !</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="pixel" href="/Projet-1.0/user/userHome">Revenir a la page d'accueil</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <div class="col s1"></div>
-        </c:forEach>
+                </c:otherwise>
+            </c:choose>
             <div class="col s1"></div>
         </div>
     </div>
