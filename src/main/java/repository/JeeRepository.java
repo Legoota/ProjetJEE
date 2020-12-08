@@ -292,6 +292,20 @@ public class JeeRepository {
     }
 
     /**
+     * Méthode permettant de récupérer l'ensemble des noms des <i>Parcours</i> disponibles
+     * @return Une liste des noms de parcours
+     */
+    public List<String> getAllNomFromParcours(){
+        List<String> parcours = null;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
+            parcours = session.query(Parcours.class).selectFields(String.class,"nom").toList();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return parcours;
+    }
+
+    /**
      * Permet de définir un <i>Parcours</i> en cours pour un user
      * @param user Le user a qui ajouter le <i>Parcours</i>
      * @param parcours Le nom du <i>Parcours</i> à ajouter
