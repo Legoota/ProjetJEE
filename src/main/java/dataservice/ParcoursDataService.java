@@ -15,6 +15,9 @@ import java.util.List;
 @LocalBean
 public class ParcoursDataService {
 
+    /**
+     * Gestion de l'accès au repository
+     */
     JeeRepository repository;
 
     /**
@@ -22,14 +25,6 @@ public class ParcoursDataService {
      */
     public ParcoursDataService() {
         this.repository = new JeeRepository();
-    }
-
-    /**
-     * Méthode permettant de récupérer une liste des noms de tous les <i>Parcours</i> disponibles
-     * @return Une liste des noms des <i>Parcours</i>
-     */
-    public List<String> getAllNomFromParcours(){
-        return repository.getAllNomFromParcours();
     }
 
     /**

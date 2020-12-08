@@ -10,17 +10,35 @@ import java.io.Serializable;
  */
 @Entity
 public class Parcours implements Serializable {
+    /**
+     * L'id du parcours
+     */
     @Id
     private String id;
+    /**
+     * L'ident du parcours
+     */
     @Column
     private String ident;
+    /**
+     * Le nom du parcours
+     */
     @Column
     private String nom;
+    /**
+     * La description du parcours
+     */
     @Column
     private String description;
+    /**
+     * L'étape de parcours
+     */
     @Column
     private Step choixCourant;
 
+    /**
+     * Constructeur par défaut d'un parcours
+     */
     public Parcours() { super(); }
 
     /**

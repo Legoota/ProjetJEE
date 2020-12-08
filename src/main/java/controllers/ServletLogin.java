@@ -16,15 +16,31 @@ import java.util.Arrays;
  */
 @WebServlet("/login/*")
 public class ServletLogin extends HttpServlet {
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * EJB UserDataService
+     */
     @EJB
     private UserDataService uds;
 
+    /**
+     * Constructeur générique du <i>Servlet</i> login
+     */
     public ServletLogin() {
         super();
     }
 
+    /**
+     * Méthode doGet du <i>Servlet</i>
+     * @param req La reqête
+     * @param resp La réponse
+     * @throws ServletException Gestion des exceptions
+     * @throws IOException Gestion des exceptions
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(req.getPathInfo() == null || req.getPathInfo().length()<1){

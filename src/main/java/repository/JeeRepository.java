@@ -26,6 +26,7 @@ public class JeeRepository {
      * @param attaques Liste d'<i>Attaques</i> à insérer dans la base de données
      * @param steps Liste de <i>Steps</i> à insérer dans la base de données
      * @param parcours Liste des <i>Parcours</i> à insérer dans la base de données
+     * @throws FileNotFoundException Gestion des erreurs de fichiers non-trouvés
      * @return <b>True</b> si la base de données a été correctement initialisée, <b>False</b> sinon
      */
     public boolean initializeDatabase(List<Polymon> polymons, List<Attaque> attaques, List<Step> steps, List<Parcours> parcours) throws FileNotFoundException {
@@ -171,6 +172,11 @@ public class JeeRepository {
         return p;
     }
 
+    /**
+     * @deprecated Méthode non-utilisée pour problèmesde fonctionnement avec RavenDB
+     * @param nom Le nom de l'image
+     * @return L'<i>ImputStream</i> de l'image
+     */
     public InputStream getImageByNom(String nom) {
         InputStream is = null;
 
@@ -271,9 +277,9 @@ public class JeeRepository {
     }
 
     /**
-     *
-     * @param pseudo
-     * @return
+     *Méthode permettant de récupérer un <i>Parcours</i> depuis un <i>User</i>
+     * @param pseudo Le pseudo du <i>User</i>
+     * @return Le <i>Parcours</i> du <i>User</i>
      */
     public Parcours getParcoursFromUser(String pseudo){
         User u = null;
@@ -305,19 +311,10 @@ public class JeeRepository {
     }
 
     /**
-     *
-     * @return
+     * Méthode permettant de récupérer l'identifiant d'un <i>Parcours</i> par son nom
+     * @param nom Le nom du <i>Parcours</i>
+     * @return L'ident du <i>Parcours</i>
      */
-    public List<String> getAllNomFromParcours(){
-        List<String> parcours = null;
-        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
-            parcours = session.query(Parcours.class).selectFields(String.class,"nom").toList();
-        } catch(Exception e) {
-            System.out.println("Erreur : " + e);
-        }
-        return parcours;
-    }
-
     public String getIdentParcoursByNom(String nom){
         String ident = null;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
@@ -328,6 +325,11 @@ public class JeeRepository {
         return ident;
     }
 
+    /**
+     * Méthode permettant de récupérer la description d'un <i>Parcours</i>
+     * @param nom Le nom du <i>Parcours</i>
+     * @return La description du <i>Parcours</i>
+     */
     public String getDescriptionForParcours(String nom) {
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
             Parcours p = session.query(Parcours.class).whereEquals("nom",nom).firstOrDefault();
@@ -338,6 +340,12 @@ public class JeeRepository {
         return "Description du parcours";
     }
 
+    /**
+     * Méthode permettant de stocker dans le base de données un nouveau <i>Polymon</i> depuis l'étape d'un <i>User</i>
+     * @param pseudo Le pseudo du <i>User</i>
+     * @param polymons Le <i>Polymon</i> à  ajouter au <i>User</i>
+     * @return <i>true</i> si le <i>Polymon</i> à été ajouté, <i>false</i> sinon
+     */
     public boolean storeNewPolymonFromUserStep(String pseudo, List<Polymon> polymons) {
         boolean res = false;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
@@ -348,11 +356,16 @@ public class JeeRepository {
             session.saveChanges();
         } catch(Exception e) {
             System.out.println("Erreur : " + e);
-            //TODO: Reparer ici
         }
         return res;
     }
 
+    /**
+     * Méthode permettant d'affecter des PV au <i>Polymon</i> adverse
+     * @param pseudo Le pseudo du <i>User</i>
+     * @param valeur Le nombre de PV à affecter
+     * @return <i>true</i> si les PV ont été ajoutés, <i>false</i> sinon
+     */
     public boolean setPolymonAdversePv(String pseudo, int valeur) {
         boolean res = false;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()){
@@ -369,6 +382,12 @@ public class JeeRepository {
         return res;
     }
 
+    /**
+     * Méthode permettant d'affecter les PV au <i>Polymon</i> du <i>User</i>
+     * @param pseudo Le pseudo du <i>User</i>
+     * @param valeur Le nombre de PV à affecter au <i>Polymon</i>
+     * @return <i>true</i> si les PV ont été ajoutés, <i>false</i> sinon
+     */
     public boolean setPolymonUserPv(String pseudo, int valeur) {
         boolean res = false;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
@@ -383,6 +402,12 @@ public class JeeRepository {
         return res;
     }
 
+    /**
+     * Méthode permettant de changer l'étape du jeu pour un <i>User</i>
+     * @param pseudo Le pseudo du <i>User</i>
+     * @param stepIdent L'identifiant de l'étape
+     * @return <i>true</i> si le changement à été fait, <i>false</i> sinon
+     */
     public boolean changeStepForUser(String pseudo, String stepIdent) {
         boolean res = false;
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {

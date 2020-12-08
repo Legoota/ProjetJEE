@@ -12,17 +12,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
+/**
+ * Classe <i>Servlet</i> pour la gestion d'un <i>Parcours</i>
+ */
 @WebServlet("/parcours/*")
 public class ServletParcours extends HttpServlet {
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * EJB UserDataService
+     */
     @EJB
     private UserDataService uds;
+    /**
+     * EJB ParcoursDataService
+     */
     @EJB
     private ParcoursDataService pds;
+    /**
+     * EJB PolymonDataService
+     */
     @EJB
     private PolymonDataService plds;
 
+    /**
+     * Constructeur générique du <i>Servlet</i> parcours
+     */
     public ServletParcours() { super(); }
 
     @Override

@@ -18,6 +18,9 @@ import java.util.concurrent.ThreadLocalRandom;
 @LocalBean
 public class UserDataService {
 
+    /**
+     * Gestion de l'accès au repository
+     */
     JeeRepository repository;
 
     /**

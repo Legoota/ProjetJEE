@@ -4,7 +4,6 @@ import model.Attaque;
 import model.Parcours;
 import model.Polymon;
 import model.Step;
-import org.apache.commons.collections.ArrayStack;
 import repository.JeeRepository;
 
 import javax.ejb.LocalBean;
@@ -20,6 +19,9 @@ import java.util.List;
 @LocalBean
 public class AdminDataService {
 
+    /**
+     * Gestion de l'accès au repository
+     */
     JeeRepository repository;
 
     /**
@@ -30,6 +32,7 @@ public class AdminDataService {
     /**
      * Méthode permettant de réaliser l'initialisation de la base de données avec un jeu de valeurs
      * @return <b>True</b> si correctement initialisée, <b>False</b> sinon
+     * @throws FileNotFoundException Gestion des fichiers non-trouvés
      */
     public boolean initializeDatabase() throws FileNotFoundException {
         List<Polymon> polymons = new ArrayList<>();
@@ -235,16 +238,5 @@ public class AdminDataService {
         parcours.add(p);
 
         return repository.initializeDatabase(polymons, attaques, steps, parcours);
-    }
-
-    /**
-     * Méthode permettant d'afficher dans la sortie standard l'ensemble des <i>Polymons</i> présents en base de données
-     */
-    public void afficheAllMonstre() {
-        List<Polymon> polymons = repository.getAllMonstre();
-
-        for(Polymon polymon : polymons) {
-            System.out.println("Le polymon d'id " + polymon.getId() + " s'appelle " + polymon.getNom());
-        }
     }
 }

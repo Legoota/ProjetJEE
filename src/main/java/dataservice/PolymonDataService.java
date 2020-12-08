@@ -18,6 +18,9 @@ import java.util.concurrent.ThreadLocalRandom;
 @LocalBean
 public class PolymonDataService {
 
+    /**
+     * Gestion de l'accès au repository
+     */
     JeeRepository repository;
 
     /**
@@ -63,6 +66,11 @@ public class PolymonDataService {
      */
     public List<Attaque> getAttaquesByNom(String nom) { return getPolymonByNom(nom).getAttaques(); }
 
+    /**
+     * Méthode permettant de récupérer le <i>Polymon</i> adversaire
+     * @param stepIdent L'id de l'étape
+     * @return Le <i>Polymon</i> adverse
+     */
     public Polymon getPolymonAdverse(String stepIdent) {
         List<Polymon> polymons = repository.getPolymonsByStepIdent(stepIdent);
         if(polymons == null) return null;

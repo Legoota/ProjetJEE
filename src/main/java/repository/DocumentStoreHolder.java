@@ -19,8 +19,11 @@ public class DocumentStoreHolder {
      * Classe représentant le conteneur lié à la base de données
      */
     private static class DocumentStoreContainer {
-        public static final IDocumentStore store =
-                new DocumentStore("http://localhost:8888", "jee");
+
+        /**
+         * Gestion de l'accès à la base de données
+         */
+        public static final IDocumentStore store = new DocumentStore("http://localhost:8888", "jee");
 
         static {
             store.initialize();

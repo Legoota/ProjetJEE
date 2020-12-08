@@ -11,26 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/* Servlet implementation class ServletTest
- */
 /**
  * Classe servlet pour la gestion de l'administrateur
  */
 @WebServlet("/admin")
 public class ServletAdmin extends HttpServlet {
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * EJB AdminDataService
+     */
     @EJB
     private AdminDataService ads;
 
-    /* @see HttpServlet#HttpServlet()
+
+    /**
+     * Constructeur générique du <i>Servlet</i> admin
      */
     public ServletAdmin() {
         super();
     }
 
-    /* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean res = ads.initializeDatabase();
         response.setContentType("text/html;charset=UTF-8");

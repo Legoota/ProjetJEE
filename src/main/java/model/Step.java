@@ -49,6 +49,9 @@ public class Step implements Serializable {
     @ElementCollection
     private List<String> steps_ids;
 
+    /**
+     * Constructeur générique d'une <i>Step</i>
+     */
     public Step() { super(); }
 
     /**
@@ -56,6 +59,7 @@ public class Step implements Serializable {
      * @param id L'identifiant de la <i>Step</i>
      * @param nom Le nom de la <i>Step</i>
      * @param description La description de la <i>Step</i>
+     * @param env L'environnement de la <i>Step</i>
      * @param polymons La liste de <i>Polymons</i> de la <i>Step</i>
      * @param steps_ids La liste des <i>Steps</i> suivantes
      */

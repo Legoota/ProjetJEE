@@ -10,13 +10,25 @@ import java.io.Serializable;
  */
 @Entity
 public class Attaque implements Serializable {
+    /**
+     * L'identifiant de l'attaque
+     */
     @Id
     private String id;
+    /**
+     * Le nom de l'attaque
+     */
     @Column
     private String nom;
+    /**
+     * Les dégâts de l'attaque
+     */
     @Column
     private int degats;
 
+    /**
+     * Constructeur par défaut d'une attaque
+     */
     public Attaque(){super();}
 
     /**

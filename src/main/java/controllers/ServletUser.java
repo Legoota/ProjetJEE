@@ -17,11 +17,20 @@ import java.io.IOException;
  */
 @WebServlet("/user/*")
 public class ServletUser extends HttpServlet {
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * EJB UserDataService
+     */
     @EJB
     private UserDataService uds;
 
+    /**
+     * Constructeur générique du <i>ServletUser</i>
+     */
     public ServletUser() { super(); }
 
     @Override

@@ -10,22 +10,45 @@ import java.io.Serializable;
  */
 @Entity
 public class User implements Serializable {
+    /**
+     * L'id d'un <i>User</i>
+     */
     @Id
     private String id;
+    /**
+     * Le prénom d'un <i>User</i>
+     */
     @Column
     private String prenom;
+    /**
+     * Le nom d'un <i>User</i>
+     */
     @Column
     private String nom;
+    /**
+     * Le pseudo d'un <i>User</i>
+     */
     @Column
     private String pseudo;
+    /**
+     * Le <i>password</i> d'un <i>User</i>
+     */
     @Column
     private String password;
+    /**
+     * Les <i>Polymon</i> du <i>User</i>
+     */
     @Column
     private Polymon polymon;
+    /**
+     * Les <i>Parcours</i> du <i>User</i>
+     */
     @Column
     private Parcours parcours;
 
-
+    /**
+     * Constructeur générique d'un <i>User</i>
+     */
     public User() {
         super();
     }
