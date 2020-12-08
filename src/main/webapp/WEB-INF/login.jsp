@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix= "c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -9,6 +10,9 @@
 </head>
 <body class="background">
     <h2 class="center-align pixel">Connexion</h2>
+    <c:if test="${sessionScope.login==false}">
+        <h5 class="center-align pixel red-text">Pseudo / Mot de passe incorrect</h5>
+    </c:if>
     <br/>
     <p>
     <div style="background: #FFFFFF; margin-left: auto; margin-right: auto; width: 42.5em; border-radius: 5px; box-shadow: 1px 1px 1px black; padding: 10px">

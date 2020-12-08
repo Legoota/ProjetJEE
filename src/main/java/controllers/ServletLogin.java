@@ -63,10 +63,13 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String route = req.getPathInfo().substring(1);
+        HttpSession loginSession = req.getSession();
+        loginSession.setAttribute("login",null);
         switch (route){
             case "login":
                 User user = uds.loginUser(req.getParameter("pseudo"),req.getParameter("password"));
                 if(user != null) {
+                    loginSession.setAttribute("login",null);
                     Cookie userCookie = new Cookie("pseudo",user.getPseudo());
                     HttpSession session = req.getSession();
                     session.setAttribute("uds",uds);
@@ -77,6 +80,7 @@ public class ServletLogin extends HttpServlet {
                     userHome.forward(req, resp);
                 }
                 else {
+                    loginSession.setAttribute("login", false);
                     RequestDispatcher loginVue  = req.getRequestDispatcher("/WEB-INF/login.jsp");
                     loginVue.forward(req, resp);
                 }
@@ -86,6 +90,7 @@ public class ServletLogin extends HttpServlet {
                 logoutVue.forward(req, resp);
                 break;
             case "signup":
+                loginSession.setAttribute("login", null);
                 boolean isUserCreated = uds.createUser(req.getParameter("prenom"), req.getParameter("nom"), req.getParameter("pseudo"), req.getParameter("password"));
                 if(isUserCreated){
                     RequestDispatcher validateAccountVue  = req.getRequestDispatcher("/WEB-INF/signupsuccess.jsp");
