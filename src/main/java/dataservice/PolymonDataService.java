@@ -30,12 +30,18 @@ public class PolymonDataService {
     /**
      * Méthode permettant de récuperer un Polymon par son nom
      * @param nom Le nom du Polymon
-     * @return Le Polymon
+     * @return Le <i>Polymon</i>
      */
     public Polymon getPolymonByNom(String nom){
         return repository.getPolymonByNom(nom);
     }
 
+    /**
+     * Méthode permettant de récupérer la base64 d'une image
+     * @param nom Le nom de l'image a récupérer
+     * @return La chaine de charactères de la base64 de l'image
+     * @throws IOException Erreur de lecture de fichier
+     */
     public String getImageByNom(String nom) throws IOException {
         //InputStream is = repository.getImageByNom(nom); // InputStream corrompu
 
@@ -50,6 +56,11 @@ public class PolymonDataService {
         return imageStr;
     }
 
+    /**
+     * Méthode permettant de récupérer la liste des attaques disponibles pour un <i>Polymon</i>
+     * @param nom Le <i>Polymon</i>
+     * @return La liste des attaques disponibles
+     */
     public List<Attaque> getAttaquesByNom(String nom) { return getPolymonByNom(nom).getAttaques(); }
 
     public Polymon getPolymonAdverse(String stepIdent) {

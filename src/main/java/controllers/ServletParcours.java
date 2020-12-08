@@ -88,13 +88,19 @@ public class ServletParcours extends HttpServlet {
                     userStepContinue.forward(req,resp);
                     break;
                 case "step/takedamage":
-                    uds.hitPolymonFromAdversaire(pseudo,(int)session.getAttribute("attaqueDegats"));
+                    boolean ko = uds.hitPolymonFromAdversaire(pseudo,(int)session.getAttribute("attaqueDegats"));
                     session.setAttribute("takeDamage",false);
-                    RequestDispatcher userStepTakeDamage = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
-                    userStepTakeDamage.forward(req,resp);
+                    if(ko) {
+                        RequestDispatcher userStepTakeDamage = req.getRequestDispatcher("/WEB-INF/userStepKo.jsp");
+                        userStepTakeDamage.forward(req,resp);
+                    }
+                    else {
+                        RequestDispatcher userStepTakeDamage = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
+                        userStepTakeDamage.forward(req,resp);
+                    }
                     break;
                 case "step/finish":
-                    int bonus = uds.getPolymonAdverseTotalLifeFromUser(pseudo)/10;
+                    int bonus = uds.getPolymonAdverseTotalLifeFromUser(pseudo)/2;
                     uds.restorePolymonLife(pseudo,bonus);
                     RequestDispatcher userStepFinished = req.getRequestDispatcher("/WEB-INF/userStepFinished.jsp");
                     userStepFinished.forward(req,resp);
