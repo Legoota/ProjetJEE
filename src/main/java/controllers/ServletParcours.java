@@ -3,6 +3,7 @@ package controllers;
 import dataservice.ParcoursDataService;
 import dataservice.PolymonDataService;
 import dataservice.UserDataService;
+import model.Attaque;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -43,6 +44,7 @@ public class ServletParcours extends HttpServlet {
             session.setAttribute("pds", pds);
             session.setAttribute("uds",uds);
             session.setAttribute("plds",plds);
+            session.setAttribute("takeDamage",false);
             switch (route) {
                 case "nouveau":
                     RequestDispatcher nouveauParcours  = req.getRequestDispatcher("/WEB-INF/choixPolymon.jsp");
@@ -76,6 +78,21 @@ public class ServletParcours extends HttpServlet {
                     RequestDispatcher userStepNew = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
                     userStepNew.forward(req,resp);
                     break;
+                case "step/continue":
+                    Attaque a = uds.getAttacked(pseudo);
+
+                    session.setAttribute("attaqueNom",a.getNom());
+                    session.setAttribute("attaqueDegats",a.getDegats());
+                    session.setAttribute("takeDamage",true);
+                    RequestDispatcher userStepContinue = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
+                    userStepContinue.forward(req,resp);
+                    break;
+                case "step/takedamage":
+                    uds.hitPolymonFromAdversaire(pseudo,(int)session.getAttribute("attaqueDegats"));
+                    session.setAttribute("takeDamage",false);
+                    RequestDispatcher userStepTakeDamage = req.getRequestDispatcher("/WEB-INF/userStepPath.jsp");
+                    userStepTakeDamage.forward(req,resp);
+                    break;
                 case "step/finish":
                     int bonus = uds.getPolymonAdverseTotalLifeFromUser(pseudo)/10;
                     uds.restorePolymonLife(pseudo,bonus);
@@ -84,12 +101,12 @@ public class ServletParcours extends HttpServlet {
                     break;
                 case "step/attaque/0":
                     boolean res = uds.hitPolymonAdverseFromUser(pseudo,plds.getAttaquesByNom(uds.getPolymonFromUser(pseudo).getNom()).get(0).getDegats());
-                    if(!res)resp.sendRedirect("/Projet-1.0/parcours/step/new");
+                    if(!res)resp.sendRedirect("/Projet-1.0/parcours/step/continue");
                     else resp.sendRedirect("/Projet-1.0/parcours/step/finish");
                     break;
                 case "step/attaque/1":
                     boolean res2 = uds.hitPolymonAdverseFromUser(pseudo,plds.getAttaquesByNom(uds.getPolymonFromUser(pseudo).getNom()).get(1).getDegats());
-                    if(!res2) resp.sendRedirect("/Projet-1.0/parcours/step/new");
+                    if(!res2) resp.sendRedirect("/Projet-1.0/parcours/step/continue");
                     else resp.sendRedirect("/Projet-1.0/parcours/step/finish");
                     break;
                 case "step/choose/0":

@@ -25,9 +25,13 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        <c:forEach items="${sessionScope.plds.getAttaquesByNom(sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom())}" var="item">
-                            <a class="pixel" href="/Projet-1.0/parcours/step/attaque/${sessionScope.uds.numeroAttaque(cookie['pseudo'].value,item.getNom())}">${item.getNom()} (${item.getDegats()})</a>
-                        </c:forEach>
+                        <c:choose>
+                            <c:when test="${sessionScope.takeDamage != true}">
+                                <c:forEach items="${sessionScope.plds.getAttaquesByNom(sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom())}" var="item">
+                                    <a class="pixel" href="/Projet-1.0/parcours/step/attaque/${sessionScope.uds.numeroAttaque(cookie['pseudo'].value,item.getNom())}">${item.getNom()} (${item.getDegats()})</a>
+                                </c:forEach>
+                            </c:when>
+                        </c:choose>
                     </div>
                 </div>
             </div>
@@ -53,12 +57,28 @@
         <div class="row">
             <div class="col s3"></div>
             <div class="col s6">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title pixel">Que voulez-vous faire ?</span>
-                        <p class="pixel">Selectionnez une des deux attaques que votre ${sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom()} va realiser sur ${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom()}</p>
+                <c:choose>
+                    <c:when test="${sessionScope.takeDamage != true}">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title pixel">Que voulez-vous faire ?</span>
+                            <p class="pixel">Selectionnez une des deux attaques que votre ${sessionScope.uds.getPolymonFromUser(cookie['pseudo'].value).getNom()} va realiser sur ${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom()}</p>
+                        </div>
                     </div>
-                </div>
+                    </c:when>
+                    <c:otherwise>
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title pixel">${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom()} vous attaque !</span>
+                            <p class="pixel">${sessionScope.uds.getPolymonAdverseFromUser(cookie['pseudo'].value).getNom()} utilise ${sessionScope.attaqueNom} (${sessionScope.attaqueDegats}) !</p>
+                        </div>
+                        <div class="card-action">
+                            <a class="pixel" href="/Projet-1.0/parcours/step/takedamage">Attaquer !</a>
+                        </div>
+                    </div>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
             <div class="col s3"></div>
         </div>

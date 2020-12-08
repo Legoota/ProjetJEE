@@ -189,7 +189,11 @@ public class UserDataService {
             repository.setPolymonUserPv(pseudo, courant.getPV() - degats);
             return false;
         }
+    }
 
+    public Attaque getAttacked(String pseudo) {
+        Polymon ennemi = getPolymonAdverseFromUser(pseudo);
+        return ennemi.getAttaques().get(ThreadLocalRandom.current().nextInt(0, ennemi.getAttaques().size()));
     }
 
     /**
