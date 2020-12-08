@@ -65,6 +65,7 @@ public class ServletLogin extends HttpServlet {
         String route = req.getPathInfo().substring(1);
         HttpSession loginSession = req.getSession();
         loginSession.setAttribute("login",null);
+        loginSession.setAttribute("signup",null);
         switch (route){
             case "login":
                 User user = uds.loginUser(req.getParameter("pseudo"),req.getParameter("password"));
@@ -93,9 +94,11 @@ public class ServletLogin extends HttpServlet {
                 loginSession.setAttribute("login", null);
                 boolean isUserCreated = uds.createUser(req.getParameter("prenom"), req.getParameter("nom"), req.getParameter("pseudo"), req.getParameter("password"));
                 if(isUserCreated){
+                    loginSession.setAttribute("signup",null);
                     RequestDispatcher validateAccountVue  = req.getRequestDispatcher("/WEB-INF/signupsuccess.jsp");
                     validateAccountVue.forward(req, resp);
                 }else{
+                    loginSession.setAttribute("signup",false);
                     RequestDispatcher deniedAccountVue  = req.getRequestDispatcher("/WEB-INF/signup.jsp");
                     deniedAccountVue.forward(req, resp);
                 }
