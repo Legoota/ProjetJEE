@@ -9,10 +9,11 @@ The main goal was to realise a JEE application about fighting monsters.
 ### Features
 
 ###### TBA:
-* Add the *Parcours* system
-* Build the duel system
-* Prettify JSPs
-* Add a user page (choice of Polymon, new game, continue, ...)
+*Add healing system
+*Add dodge probability
+*Redo image storage
+*Add other parcours
+*Add the possibility to change attacks
 
 ###### Working:
 * Account creation
@@ -20,6 +21,9 @@ The main goal was to realise a JEE application about fighting monsters.
 * NoSQL database storage
 * List of *Attaque* for each *Polymons*
 * Create *Parcours* choices
+* Create *Parcours* system
+* Create Duel system
+* User page (choice of Polymon, new game, continue, ...)
 
 ---
 ### Installation
