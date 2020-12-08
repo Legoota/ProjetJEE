@@ -60,6 +60,7 @@ public class Step implements Serializable {
      * @param steps_ids La liste des <i>Steps</i> suivantes
      */
     public Step(String id, String nom, String description, String env, List<Polymon> polymons, List<String> steps_ids) {
+        super();
         this.id = id;
         this.ident = id;
         this.nom = nom;

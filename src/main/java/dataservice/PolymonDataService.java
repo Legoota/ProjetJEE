@@ -58,4 +58,15 @@ public class PolymonDataService {
         if(polymons.size() == 1) return polymons.get(0);
         else return polymons.get(ThreadLocalRandom.current().nextInt(0, polymons.size()));
     }
+
+    public Attaque getAttaqueDegatsRandomByNom(String nom) {
+        List<Attaque> attaques = getAttaquesByNom(nom);
+        if(attaques == null) return null;
+        if(attaques.size() == 1) return attaques.get(0);
+        else {
+            return attaques.get(0);
+            //TODO: correct to randomize
+            //return attaques.get(ThreadLocalRandom.current().nextInt(0, attaques.size()));
+        }
+    }
 }

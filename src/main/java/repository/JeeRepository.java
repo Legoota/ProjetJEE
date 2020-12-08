@@ -225,15 +225,14 @@ public class JeeRepository {
      * @param ident L'identifiant du <i>Step</i> actuel
      * @return La liste des <i>Step</i> suivants
      */
-    public List<Step> getNextStepByStepIdent(String ident){
-        List<Step> steps = null;
+    public List<String> getNextStepByStepIdent(String ident){
         try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
-            List<String> nextStepIds = session.query(Step.class).whereEquals("ident",ident).selectFields(String.class, "choixSuivants").toList();
-            steps = session.query(Step.class).containsAny("ident",nextStepIds).toList();
+            Step s = session.query(Step.class).whereEquals("ident",ident).firstOrDefault();
+            return s.getChoixSuivants();
         } catch (Exception e) {
             System.out.println("Erreur : " + e);
         }
-        return steps;
+        return null;
     }
 
     /**
@@ -363,10 +362,39 @@ public class JeeRepository {
             cur.getPolymons().get(0).setPV(valeur);
             session.saveChanges();
             res = true;
-        }catch(Exception e) {
+        } catch(Exception e) {
             System.out.println("Erreur : " + e);
         }
 
+        return res;
+    }
+
+    public boolean setPolymonUserPv(String pseudo, int valeur) {
+        boolean res = false;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            User u = session.query(User.class).whereEquals("pseudo",pseudo).firstOrDefault();
+            Polymon p = u.getPolymon();
+            p.setPV(valeur);
+            res = true;
+            session.saveChanges();
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
+        return res;
+    }
+
+    public boolean changeStepForUser(String pseudo, String stepIdent) {
+        boolean res = false;
+        try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
+            Step s = session.query(Step.class).whereEquals("ident",stepIdent).firstOrDefault();
+            User u = session.query(User.class).whereEquals("pseudo",pseudo).firstOrDefault();
+            Parcours p = u.getParcours();
+            p.setChoixCourant(s);
+            session.saveChanges();
+            res = true;
+        } catch(Exception e) {
+            System.out.println("Erreur : " + e);
+        }
         return res;
     }
 }

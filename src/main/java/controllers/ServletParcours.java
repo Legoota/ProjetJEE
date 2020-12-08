@@ -77,6 +77,8 @@ public class ServletParcours extends HttpServlet {
                     userStepNew.forward(req,resp);
                     break;
                 case "step/finish":
+                    int bonus = uds.getPolymonAdverseTotalLifeFromUser(pseudo)/10;
+                    uds.restorePolymonLife(pseudo,bonus);
                     RequestDispatcher userStepFinished = req.getRequestDispatcher("/WEB-INF/userStepFinished.jsp");
                     userStepFinished.forward(req,resp);
                     break;
@@ -89,6 +91,14 @@ public class ServletParcours extends HttpServlet {
                     boolean res2 = uds.hitPolymonAdverseFromUser(pseudo,plds.getAttaquesByNom(uds.getPolymonFromUser(pseudo).getNom()).get(1).getDegats());
                     if(!res2) resp.sendRedirect("/Projet-1.0/parcours/step/new");
                     else resp.sendRedirect("/Projet-1.0/parcours/step/finish");
+                    break;
+                case "step/choose/0":
+                    uds.changeStepForUser(pseudo,uds.getNextStepNameByStepIdent(pseudo).get(0));
+                    resp.sendRedirect("/Projet-1.0/parcours/step/new");
+                    break;
+                case "step/choose/1":
+                    uds.changeStepForUser(pseudo,uds.getNextStepNameByStepIdent(pseudo).get(1));
+                    resp.sendRedirect("/Projet-1.0/parcours/step/new");
                     break;
                 default:
                     RequestDispatcher defautHome  = req.getRequestDispatcher("/WEB-INF/userHome.jsp");

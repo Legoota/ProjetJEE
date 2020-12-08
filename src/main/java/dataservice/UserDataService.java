@@ -106,6 +106,11 @@ public class UserDataService {
         }
     }
 
+    public int getPolymonAdverseTotalLifeFromUser(String pseudo) {
+        Polymon adv = getPolymonAdverseFromUser(pseudo);
+        return repository.getPolymonByNom(adv.getNom()).getPV();
+    }
+
     public int getCurrentPourcentagePolymonLife(String nomPolymon, int pvCourant){
         int defaut = repository.getPolymonByNom(nomPolymon).getPV();
         return pvCourant*100/defaut;
@@ -122,6 +127,19 @@ public class UserDataService {
         return user_parcours.getChoixCourant();
     }
 
+    public List<String> getNextStepNameByStepIdent(String pseudo) {
+        return repository.getNextStepByStepIdent(getCurrentStep(pseudo).getIdent());
+    }
+
+    public Step getStepFromStepIdent(String stepIdent) {
+        return repository.getStepByIdent(stepIdent);
+    }
+
+    public boolean restorePolymonLife(String pseudo, int increment) {
+        Polymon p = repository.getPolymonByNom(repository.getPolymonFromUser(pseudo).getNom());
+        return repository.setPolymonUserPv(pseudo, p.getPV()+increment);
+    }
+
     public int numeroAttaque(String pseudo, String nomAttaque) {
         Polymon courant = getPolymonFromUser(pseudo);
         int res = 0;
@@ -130,6 +148,19 @@ public class UserDataService {
             res++;
         }
         return res;
+    }
+
+    public int numeroStepIdent(String pseudo, String stepIdent) {
+        int res = 0;
+        for(String stepIdents: getNextStepNameByStepIdent(pseudo)) {
+            if(stepIdent.equals(stepIdents)) return res;
+            res++;
+        }
+        return res;
+    }
+
+    public boolean changeStepForUser(String pseudo, String stepIdent) {
+        return repository.changeStepForUser(pseudo, stepIdent);
     }
 
     public boolean hitPolymonAdverseFromUser(String pseudo, int degats) {
@@ -144,6 +175,21 @@ public class UserDataService {
             repository.setPolymonAdversePv(pseudo, adverse.getPV() - degats);
         }
         return res;
+    }
+
+    public boolean hitPolymonFromAdversaire(String pseudo, int degats) {
+        Polymon courant = getPolymonFromUser(pseudo);
+        int res = 0;
+        if(courant.getPV() - degats <= 0) {
+            repository.setPolymonUserPv(pseudo, 0);
+            return true;
+            //TODO: faire ca
+        }
+        else {
+            repository.setPolymonUserPv(pseudo, courant.getPV() - degats);
+            return false;
+        }
+
     }
 
     /**
