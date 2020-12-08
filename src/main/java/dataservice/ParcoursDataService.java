@@ -46,5 +46,10 @@ public class ParcoursDataService {
      */
     public String getDescriptionForParcours(String nom) { return repository.getDescriptionForParcours(nom); }
 
+    /**
+     * Méthode permettant d'obtenir la <i>Step</i> a partir de son ident
+     * @param ident L'ident de la <i>Step</i> a obtenir
+     * @return La <i>Step</i>
+     */
     public Step getStepFromIdent(String ident) { return repository.getStepByIdent(ident); }
 }
